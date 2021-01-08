@@ -1,0 +1,6 @@
+.popup__close {
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  transform: rotate(-45deg);
+}
