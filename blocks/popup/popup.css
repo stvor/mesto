@@ -7,6 +7,5 @@
   display: none;
   justify-content: center;
   align-items: center;
-  background: #000000;
-  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.5);
 }
