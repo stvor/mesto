@@ -7,15 +7,15 @@ let nameInput = document.querySelector('.form__name');
 let professionInput = document.querySelector('.form__profession');
 let formElement = document.querySelector('.form');
 
-profileEditButton.addEventListener('click', () => {
+function popupOpen() {
   popup.classList.add('popup_open');
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
-});
+}
 
-popupCloseButton.addEventListener('click', () => {
+function popupClose() {
   popup.classList.remove('popup_open');
-});
+}
 
 function handleFormSubmit (evt) {
   evt.preventDefault();
@@ -23,5 +23,9 @@ function handleFormSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
 }
+
+profileEditButton.addEventListener('click', popupOpen);
+
+popupCloseButton.addEventListener('click', popupClose);
 
 formElement.addEventListener('submit', handleFormSubmit);
