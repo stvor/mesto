@@ -22,6 +22,8 @@ function handleFormSubmit (evt) {
 
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
+
+  popupClose();
 }
 
 profileEditButton.addEventListener('click', popupOpen);
