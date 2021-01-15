@@ -5,6 +5,7 @@ let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 let nameInput = document.querySelector('.form__name');
 let professionInput = document.querySelector('.form__profession');
+let formElement = document.querySelector('.form');
 
 profileEditButton.addEventListener('click', () => {
   popup.classList.add('popup_open');
@@ -15,3 +16,12 @@ profileEditButton.addEventListener('click', () => {
 popupCloseButton.addEventListener('click', () => {
   popup.classList.remove('popup_open');
 });
+
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+
+    profileName.textContent = nameInput.value;
+    profileProfession.textContent = professionInput.value;
+}
+
+formElement.addEventListener('submit', handleFormSubmit);
