@@ -18,10 +18,10 @@ popupCloseButton.addEventListener('click', () => {
 });
 
 function handleFormSubmit (evt) {
-    evt.preventDefault();
+  evt.preventDefault();
 
-    profileName.textContent = nameInput.value;
-    profileProfession.textContent = professionInput.value;
+  profileName.textContent = nameInput.value;
+  profileProfession.textContent = professionInput.value;
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
