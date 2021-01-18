@@ -24,8 +24,9 @@
 @import url('../blocks/form/__save-button/form__save-button.css');
 @import url('../blocks/cards-grid/__list/cards-grid__list.css');
 @import url('../blocks/cards-grid/__image/cards-grid__image.css');
-@import url('../blocks/cards-grid/__heading/cards-grid__heading.css');
 @import url('../blocks/cards-grid/__heading-wrap/cards-grid__heading-wrap.css');
+@import url('../blocks/cards-grid/__heading/cards-grid__heading.css');
+@import url('../blocks/cards-grid/__like-button/cards-grid__like-button.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
