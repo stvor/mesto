@@ -9,3 +9,8 @@
   line-height: 22px;
   color: #FFFFFF;
 }
+
+.form__save-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

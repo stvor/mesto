@@ -5,3 +5,8 @@
   background-position: center;
   flex-shrink: 0;
 }
+
+.cards-grid__like-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
