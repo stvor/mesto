@@ -1,7 +1,8 @@
 .cards-grid__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-  grid-gap: 17px;
+  row-gap: 20px;
+  column-gap: 17px;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -9,6 +10,6 @@
 
 @media screen and (max-width: 320px) {
   .cards-grid__list {
-    grid-gap: 20px;
+    row-gap: 20px;
   }
 }
