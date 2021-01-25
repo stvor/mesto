@@ -3,3 +3,10 @@
   align-items: baseline;
   gap: 18px;
 }
+
+@media screen and (max-width: 320px) {
+  .profile__wrapper {
+    gap: 10px;
+    padding-left: 28px;
+  }
+}
