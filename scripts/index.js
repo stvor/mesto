@@ -6,6 +6,7 @@ let profileProfession = document.querySelector('.profile__profession');
 let nameInput = document.querySelector('.form__name');
 let professionInput = document.querySelector('.form__profession');
 let formElement = document.querySelector('.form');
+let likeButtons = document.querySelectorAll('.cards-grid__like-button');
 
 function popupOpen() {
   popup.classList.add('popup_open');
@@ -31,3 +32,9 @@ profileEditButton.addEventListener('click', popupOpen);
 popupCloseButton.addEventListener('click', popupClose);
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+for (let i = 0; i < likeButtons.length; i++) {
+  likeButtons[i].addEventListener('click', function() {
+    likeButtons[i].classList.toggle('cards-grid__like-button_active');
+  });
+}
