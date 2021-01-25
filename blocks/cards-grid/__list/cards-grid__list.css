@@ -6,3 +6,9 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 320px) {
+  .cards-grid__list {
+    grid-gap: 20px;
+  }
+}
