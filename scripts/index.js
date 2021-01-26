@@ -3,8 +3,8 @@ let popup = document.querySelector('.popup');
 let popupCloseButton = popup.querySelector('.popup__close');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
-let nameInput = document.querySelector('.form__name');
-let professionInput = document.querySelector('.form__profession');
+let nameInput = document.querySelector('.form__input_type_name');
+let professionInput = document.querySelector('.form__input_type_profession');
 let formElement = document.querySelector('.form');
 let likeButtons = document.querySelectorAll('.cards-grid__like-button');
 
