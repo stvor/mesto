@@ -12,6 +12,8 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddPopup = document.querySelector('.popup_type_card-add');
 const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
 const cardAddFormElement = document.querySelector('.form_type_card-add');
+const placeNameInput = cardAddFormElement.querySelector('.form__input_type_place-name');
+const placeLinkInput = cardAddFormElement.querySelector('.form__input_type_place-link');
 
 const initialCards = [
   {
@@ -131,10 +133,10 @@ function handleCardAddPopupClose() {
 function handleCardAddFormSubmit (evt) {
   evt.preventDefault();
 
-  const newCard = {
-    name: 'Медведково',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  };
+  const newCard = {};
+
+  newCard.name = placeNameInput.value;
+  newCard.link = placeLinkInput.value;
 
   renderCard(newCard);
 
