@@ -5,12 +5,13 @@ const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const nameInput = document.querySelector('.form__input_type_name');
 const professionInput = document.querySelector('.form__input_type_profession');
-const profileEditFormElement = document.querySelector('.form');
+const profileEditFormElement = document.querySelector('.form_type_profile-edit');
 const cardsList = document.querySelector('.cards-grid__list');
 const cardTemplate = document.querySelector('.card-template').content;
 const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddPopup = document.querySelector('.popup_type_card-add');
 const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
+const cardAddFormElement = document.querySelector('.form_type_card-add');
 
 const initialCards = [
   {
@@ -127,6 +128,12 @@ function handleCardAddPopupClose() {
   cardAddPopup.classList.remove('popup_open');
 }
 
+function handleCardAddFormSubmit (evt) {
+  evt.preventDefault();
+
+  handleCardAddPopupClose();
+}
+
 
 ////////////////////////////////////////////////////////////
 // ВЫЗОВ ФУНКЦИЙ
@@ -142,8 +149,8 @@ renderInitialCards();
 
 profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
-
 profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
 closeCardAddPopupButton.addEventListener('click', handleCardAddPopupClose);
+cardAddFormElement.addEventListener('submit', handleCardAddFormSubmit);
