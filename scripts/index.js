@@ -1,11 +1,11 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
-const popupCloseButton = popup.querySelector('.popup__close');
+const profileEditPopup = document.querySelector('.popup_type_profile-edit');
+const closeProfileEditPopupButton = profileEditPopup.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const nameInput = document.querySelector('.form__input_type_name');
 const professionInput = document.querySelector('.form__input_type_profession');
-const formElement = document.querySelector('.form');
+const profileEditFormElement = document.querySelector('.form');
 const cardsList = document.querySelector('.cards-grid__list');
 const cardTemplate = document.querySelector('.card-template').content;
 
@@ -92,23 +92,23 @@ function handleLikeCard (evt) {
 // РАБОТА С ПОПАПАМИ
 ////////////////////////////////////////////////////////////
 
-function popupOpen() {
-  popup.classList.add('popup_open');
+function handleProfileEditPopupOpen() {
+  profileEditPopup.classList.add('popup_open');
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 }
 
-function popupClose() {
-  popup.classList.remove('popup_open');
+function handleProfileEditPopupClose() {
+  profileEditPopup.classList.remove('popup_open');
 }
 
-function handleFormSubmit (evt) {
+function handleProfileEditFormSubmit (evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
 
-  popupClose();
+  handleProfileEditPopupClose();
 }
 
 
@@ -124,8 +124,7 @@ renderInitialCards();
 // ДОБАВЛЕНИЕ СЛУШАТЕЛЕЙ
 ////////////////////////////////////////////////////////////
 
-profileEditButton.addEventListener('click', popupOpen);
+profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
+closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
 
-popupCloseButton.addEventListener('click', popupClose);
-
-formElement.addEventListener('submit', handleFormSubmit);
+profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
