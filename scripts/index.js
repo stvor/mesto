@@ -6,6 +6,8 @@ let profileProfession = document.querySelector('.profile__profession');
 let nameInput = document.querySelector('.form__input_type_name');
 let professionInput = document.querySelector('.form__input_type_profession');
 let formElement = document.querySelector('.form');
+const cardsList = document.querySelector('.cards-grid__list');
+const cardTemplate = document.querySelector('.card-template').content;
 
 const initialCards = [
   {
@@ -34,6 +36,49 @@ const initialCards = [
   }
 ];
 
+
+////////////////////////////////////////////////////////////
+// ОТРИСОВКА КАРТОЧЕК
+////////////////////////////////////////////////////////////
+
+// Отрисовываем первые карточки
+function renderInitialCards () {
+  initialCards.forEach(renderCard);
+}
+
+// Отрисовываем произвольную карточку
+function renderCard (cardObj) {
+
+  // Клонируем шаблон
+  const cardItem = cardTemplate.cloneNode(true);
+
+  // Заполняем шаблон
+  // 1. Изображение места
+  cardItem.querySelector('.cards-grid__image').src = cardObj.link;
+
+  // 2. Название места
+  cardItem.querySelector('.cards-grid__heading').textContent = cardObj.name;
+
+  // Вешаем слушатель на кнопку удаления
+  cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
+
+  // Отрисовываем карточку на странице
+  cardsList.appendChild(cardItem);
+}
+
+
+////////////////////////////////////////////////////////////
+// УДАЛЕНИЕ КАРТОЧЕК
+////////////////////////////////////////////////////////////
+
+function handleDeleteCard (evt) {
+  evt.target.closest('.cards-grid__list-item').remove();
+}
+
+////////////////////////////////////////////////////////////
+// РАБОТА С ПОПАПАМИ
+////////////////////////////////////////////////////////////
+
 function popupOpen() {
   popup.classList.add('popup_open');
   nameInput.value = profileName.textContent;
@@ -52,6 +97,19 @@ function handleFormSubmit (evt) {
 
   popupClose();
 }
+
+
+////////////////////////////////////////////////////////////
+// ВЫЗОВ ФУНКЦИЙ
+////////////////////////////////////////////////////////////
+
+// Отрисовать первые карточки
+renderInitialCards();
+
+
+////////////////////////////////////////////////////////////
+// ДОБАВЛЕНИЕ СЛУШАТЕЛЕЙ
+////////////////////////////////////////////////////////////
 
 profileEditButton.addEventListener('click', popupOpen);
 

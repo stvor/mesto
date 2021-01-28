@@ -18,6 +18,7 @@
 @import url('../blocks/cards-grid/__list/cards-grid__list.css');
 @import url('../blocks/cards-grid/__list-item/cards-grid__list-item.css');
 @import url('../blocks/cards-grid/__image/cards-grid__image.css');
+@import url('../blocks/cards-grid/__delete-button/cards-grid__delete-button.css');
 @import url('../blocks/cards-grid/__heading-wrap/cards-grid__heading-wrap.css');
 @import url('../blocks/cards-grid/__heading/cards-grid__heading.css');
 @import url('../blocks/cards-grid/__like-button/cards-grid__like-button.css');
