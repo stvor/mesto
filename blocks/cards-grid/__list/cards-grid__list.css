@@ -7,9 +7,3 @@
   margin: 0;
   padding: 0;
 }
-
-@media screen and (max-width: 320px) {
-  .cards-grid__list {
-    row-gap: 20px;
-  }
-}

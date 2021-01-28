@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mesto</title>
+  <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
@@ -18,11 +18,11 @@
       <div class="profile__info">
         <div class="profile__wrapper">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <span class="profile__edit-button"></span>
+          <button class="profile__edit-button" type="button"></button>
         </div>
         <p class="profile__profession">Исследователь океана</p>
       </div>
-      <span class="profile__add-button"></span>
+      <button class="profile__add-button" type="button"></button>
     </section>
 
     <section class="cards-grid">
@@ -36,17 +36,17 @@
   </footer>
 </div>
 
-<section class="popup">
+<div class="popup">
   <div class="popup__container">
-    <span class="popup__close"></span>
-    <form class="form" action="#">
+    <button class="popup__close" type="button"></button>
+    <form class="form" name="profile-form" action="#">
       <h2 class="form__title">Редактировать профиль</h2>
-      <input type="text" placeholder="Имя" class="form__input form__name">
-      <input type="text" placeholder="Профессия" class="form__input form__profession">
-      <input type="submit" value="Сохранить" class="form__save-button">
+      <input type="text" name="name" placeholder="Имя" class="form__input form__input_type_name">
+      <input type="text" name="profession" placeholder="Профессия" class="form__input form__input_type_profession">
+      <button type="submit" class="form__save-button">Сохранить</button>
     </form>
   </div>
-</section>
+</div>
 
 <template>
   <li class="cards-grid__list-item">
