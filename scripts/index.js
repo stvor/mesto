@@ -47,7 +47,7 @@ const initialCards = [
 
 // Отрисовываем первые карточки
 function renderInitialCards () {
-  initialCards.forEach(renderCard);
+  initialCards.reverse().forEach(renderCard);
 }
 
 // Отрисовываем произвольную карточку
@@ -70,7 +70,7 @@ function renderCard (cardObj) {
   cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
 
   // Отрисовываем карточку на странице
-  cardsList.appendChild(cardItem);
+  cardsList.prepend(cardItem);
 }
 
 
@@ -130,6 +130,13 @@ function handleCardAddPopupClose() {
 
 function handleCardAddFormSubmit (evt) {
   evt.preventDefault();
+
+  const newCard = {
+    name: 'Медведково',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  };
+
+  renderCard(newCard);
 
   handleCardAddPopupClose();
 }
