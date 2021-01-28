@@ -62,6 +62,9 @@ function renderCard (cardObj) {
   // Вешаем слушатель на кнопку удаления
   cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
 
+  // Вешаем слушатель на кнопку лайка
+  cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
+
   // Отрисовываем карточку на странице
   cardsList.appendChild(cardItem);
 }
@@ -74,6 +77,16 @@ function renderCard (cardObj) {
 function handleDeleteCard (evt) {
   evt.target.closest('.cards-grid__list-item').remove();
 }
+
+
+////////////////////////////////////////////////////////////
+// ЛАЙК КАРТОЧЕК
+////////////////////////////////////////////////////////////
+
+function handleLikeCard (evt) {
+  evt.target.classList.toggle('cards-grid__like-button_active');
+}
+
 
 ////////////////////////////////////////////////////////////
 // РАБОТА С ПОПАПАМИ
