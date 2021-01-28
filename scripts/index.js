@@ -8,6 +8,9 @@ const professionInput = document.querySelector('.form__input_type_profession');
 const profileEditFormElement = document.querySelector('.form');
 const cardsList = document.querySelector('.cards-grid__list');
 const cardTemplate = document.querySelector('.card-template').content;
+const cardAddButton = document.querySelector('.profile__add-button');
+const cardAddPopup = document.querySelector('.popup_type_card-add');
+const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
 
 const initialCards = [
   {
@@ -89,7 +92,7 @@ function handleLikeCard (evt) {
 
 
 ////////////////////////////////////////////////////////////
-// РАБОТА С ПОПАПАМИ
+// РАБОТА С ПОПАПОМ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 ////////////////////////////////////////////////////////////
 
 function handleProfileEditPopupOpen() {
@@ -113,6 +116,19 @@ function handleProfileEditFormSubmit (evt) {
 
 
 ////////////////////////////////////////////////////////////
+// РАБОТА С ПОПАПОМ ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
+////////////////////////////////////////////////////////////
+
+function handleCardAddPopupOpen() {
+  cardAddPopup.classList.add('popup_open');
+}
+
+function handleCardAddPopupClose() {
+  cardAddPopup.classList.remove('popup_open');
+}
+
+
+////////////////////////////////////////////////////////////
 // ВЫЗОВ ФУНКЦИЙ
 ////////////////////////////////////////////////////////////
 
@@ -128,3 +144,6 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
 
 profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
+
+cardAddButton.addEventListener('click', handleCardAddPopupOpen);
+closeCardAddPopupButton.addEventListener('click', handleCardAddPopupClose);
