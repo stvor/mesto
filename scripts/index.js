@@ -6,6 +6,8 @@ let profileProfession = document.querySelector('.profile__profession');
 let nameInput = document.querySelector('.form__input_type_name');
 let professionInput = document.querySelector('.form__input_type_profession');
 let formElement = document.querySelector('.form');
+const cardsList = document.querySelector('.cards-grid__list');
+const cardTemplate = document.querySelector('.card-template').content;
 
 const initialCards = [
   {
@@ -34,6 +36,28 @@ const initialCards = [
   }
 ];
 
+// Отрисовываем первые карточки
+function renderInitialCards () {
+  initialCards.forEach(renderCard);
+}
+
+// Отрисовываем произвольную карточку
+function renderCard (cardObj) {
+
+  // Клонируем шаблон
+  const htmlElement = cardTemplate.cloneNode(true);
+
+  // Заполняем шаблон
+  // 1. Изображение места
+  htmlElement.querySelector('.cards-grid__image').src = cardObj.link;
+
+  // 2. Название места
+  htmlElement.querySelector('.cards-grid__heading').textContent = cardObj.name;
+
+  // Отрисовываем карточку на странице
+  cardsList.appendChild(htmlElement);
+}
+
 function popupOpen() {
   popup.classList.add('popup_open');
   nameInput.value = profileName.textContent;
@@ -52,6 +76,8 @@ function handleFormSubmit (evt) {
 
   popupClose();
 }
+
+renderInitialCards();
 
 profileEditButton.addEventListener('click', popupOpen);
 
