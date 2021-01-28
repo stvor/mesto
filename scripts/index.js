@@ -50,17 +50,20 @@ function renderInitialCards () {
 function renderCard (cardObj) {
 
   // Клонируем шаблон
-  const htmlElement = cardTemplate.cloneNode(true);
+  const cardItem = cardTemplate.cloneNode(true);
 
   // Заполняем шаблон
   // 1. Изображение места
-  htmlElement.querySelector('.cards-grid__image').src = cardObj.link;
+  cardItem.querySelector('.cards-grid__image').src = cardObj.link;
 
   // 2. Название места
-  htmlElement.querySelector('.cards-grid__heading').textContent = cardObj.name;
+  cardItem.querySelector('.cards-grid__heading').textContent = cardObj.name;
+
+  // Вешаем слушатель на кнопку удаления
+  cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
 
   // Отрисовываем карточку на странице
-  cardsList.appendChild(htmlElement);
+  cardsList.appendChild(cardItem);
 }
 
 
@@ -68,7 +71,9 @@ function renderCard (cardObj) {
 // УДАЛЕНИЕ КАРТОЧЕК
 ////////////////////////////////////////////////////////////
 
-
+function handleDeleteCard (evt) {
+  evt.target.closest('.cards-grid__list-item').remove();
+}
 
 ////////////////////////////////////////////////////////////
 // РАБОТА С ПОПАПАМИ
