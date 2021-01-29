@@ -33,3 +33,9 @@
 @import url('../blocks/form/__title/form__title.css');
 @import url('../blocks/form/__input/form__input.css');
 @import url('../blocks/form/__save-button/form__save-button.css');
+@import url('../blocks/image-popup/image-popup.css');
+@import url('../blocks/image-popup/_open/image-popup_open.css');
+@import url('../blocks/image-popup/__container/image-popup__container.css');
+@import url('../blocks/image-popup/__close/image-popup__close.css');
+@import url('../blocks/image-popup/__place-image/image-popup__place-image.css');
+@import url('../blocks/image-popup/__place-name/image-popup__place-name.css');
