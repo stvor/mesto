@@ -1,5 +1,5 @@
 .cards-grid__delete-button {
-  background-image: url("/images/delete-button.svg");
+  background-image: url("./../../../images/delete-button.svg");
   background-repeat: no-repeat;
   background-color: transparent;
   padding: 0;
