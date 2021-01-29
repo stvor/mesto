@@ -14,6 +14,8 @@ const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
 const cardAddFormElement = document.querySelector('.form_type_card-add');
 const placeNameInput = cardAddFormElement.querySelector('.form__input_type_place-name');
 const placeLinkInput = cardAddFormElement.querySelector('.form__input_type_place-link');
+const placeImagePopup = document.querySelector('.image-popup');
+const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 
 const initialCards = [
   {
@@ -70,6 +72,9 @@ function renderCard (cardObj) {
 
   // Вешаем слушатель на кнопку лайка
   cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
+
+  // Вешаем слушатель на изображение
+  cardItem.querySelector('.cards-grid__image').addEventListener('click', handlePlaceImagePopupOpen);
 
   // Отрисовываем карточку на странице
   cardsList.prepend(cardItem);
@@ -145,6 +150,18 @@ function handleCardAddFormSubmit (evt) {
 
 
 ////////////////////////////////////////////////////////////
+// РАБОТА С ПОПАПОМ ИЗОБРАЖЕНИЯ ИЗ КАРТОЧКИ
+////////////////////////////////////////////////////////////
+
+function handlePlaceImagePopupOpen() {
+  placeImagePopup.classList.add('image-popup_open');
+}
+
+function handlePlaceImagePopupClose() {
+  placeImagePopup.classList.remove('image-popup_open');
+}
+
+////////////////////////////////////////////////////////////
 // ВЫЗОВ ФУНКЦИЙ
 ////////////////////////////////////////////////////////////
 
@@ -163,3 +180,5 @@ profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
 closeCardAddPopupButton.addEventListener('click', handleCardAddPopupClose);
 cardAddFormElement.addEventListener('submit', handleCardAddFormSubmit);
+
+closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
