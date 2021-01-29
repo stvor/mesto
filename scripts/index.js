@@ -153,7 +153,9 @@ function handleCardAddFormSubmit (evt) {
 // РАБОТА С ПОПАПОМ ИЗОБРАЖЕНИЯ ИЗ КАРТОЧКИ
 ////////////////////////////////////////////////////////////
 
-function handlePlaceImagePopupOpen() {
+function handlePlaceImagePopupOpen(evt) {
+  placeImagePopup.querySelector('.image-popup__place-image').src = evt.target.closest('.cards-grid__image').src;
+  placeImagePopup.querySelector('.image-popup__place-name').textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
   placeImagePopup.classList.add('image-popup_open');
 }
 
