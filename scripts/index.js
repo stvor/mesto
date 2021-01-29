@@ -44,67 +44,35 @@ const initialCards = [
   }
 ];
 
-
-////////////////////////////////////////////////////////////
-// ОТРИСОВКА КАРТОЧЕК
-////////////////////////////////////////////////////////////
-
-// Отрисовываем первые карточки
 function renderInitialCards () {
   initialCards.reverse().forEach(renderCard);
 }
 
-// Отрисовываем произвольную карточку
 function renderCard (cardObj) {
 
-  // Клонируем шаблон
   const cardItem = cardTemplate.cloneNode(true);
 
-  // Заполняем шаблон
-  // 1. Изображение места
   cardItem.querySelector('.cards-grid__image').src = cardObj.link;
-
-  // 2. Название места
   cardItem.querySelector('.cards-grid__heading').textContent = cardObj.name;
 
-  // Вешаем слушатель на кнопку удаления
   cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
-
-  // Вешаем слушатель на кнопку лайка
   cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
-
-  // Вешаем слушатель на изображение
   cardItem.querySelector('.cards-grid__image').addEventListener('click', handlePlaceImagePopupOpen);
 
-  // Отрисовываем карточку на странице
   cardsList.prepend(cardItem);
 }
-
-
-////////////////////////////////////////////////////////////
-// УДАЛЕНИЕ КАРТОЧЕК
-////////////////////////////////////////////////////////////
 
 function handleDeleteCard (evt) {
   evt.target.closest('.cards-grid__list-item').remove();
 }
 
-
-////////////////////////////////////////////////////////////
-// ЛАЙК КАРТОЧЕК
-////////////////////////////////////////////////////////////
-
 function handleLikeCard (evt) {
   evt.target.classList.toggle('cards-grid__like-button_active');
 }
 
-
-////////////////////////////////////////////////////////////
-// РАБОТА С ПОПАПОМ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-////////////////////////////////////////////////////////////
-
 function handleProfileEditPopupOpen() {
   profileEditPopup.classList.add('popup_open');
+
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 
@@ -124,11 +92,6 @@ function handleProfileEditFormSubmit (evt) {
 
   handleProfileEditPopupClose();
 }
-
-
-////////////////////////////////////////////////////////////
-// РАБОТА С ПОПАПОМ ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
-////////////////////////////////////////////////////////////
 
 function handleCardAddPopupOpen() {
   cardAddPopup.classList.add('popup_open');
@@ -154,14 +117,10 @@ function handleCardAddFormSubmit (evt) {
   handleCardAddPopupClose();
 }
 
-
-////////////////////////////////////////////////////////////
-// РАБОТА С ПОПАПОМ ИЗОБРАЖЕНИЯ ИЗ КАРТОЧКИ
-////////////////////////////////////////////////////////////
-
 function handlePlaceImagePopupOpen(evt) {
   placeImagePopup.querySelector('.image-popup__place-image').src = evt.target.closest('.cards-grid__image').src;
   placeImagePopup.querySelector('.image-popup__place-name').textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
+
   placeImagePopup.classList.add('image-popup_open');
 
   closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
@@ -170,18 +129,7 @@ function handlePlaceImagePopupOpen(evt) {
 function handlePlaceImagePopupClose() {
   placeImagePopup.classList.remove('image-popup_open');
 }
-
-////////////////////////////////////////////////////////////
-// ВЫЗОВ ФУНКЦИЙ
-////////////////////////////////////////////////////////////
-
-// Отрисовать первые карточки
 renderInitialCards();
-
-
-////////////////////////////////////////////////////////////
-// ДОБАВЛЕНИЕ СЛУШАТЕЛЕЙ
-////////////////////////////////////////////////////////////
 
 profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 
