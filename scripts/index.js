@@ -33,7 +33,7 @@ function renderCard (cardData) {
 
   cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
   cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
-  cardItem.querySelector('.cards-grid__image').addEventListener('click', handlePlaceImagePopupOpen);
+  cardItem.querySelector('.cards-grid__image').addEventListener('click', () => handlePlaceImagePopupOpen(cardData));
 
   cardsList.prepend(cardItem);
 }
@@ -98,10 +98,10 @@ function handleCardAddFormSubmit (evt) {
   handleCardAddPopupClose();
 }
 
-function handlePlaceImagePopupOpen(evt) {
-  placeImage.src = evt.target.closest('.cards-grid__image').src;
-  placeImage.alt = evt.target.closest('.cards-grid__image').alt;
-  placeName.textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
+function handlePlaceImagePopupOpen(cardData) {
+  placeImage.src = cardData.link;
+  placeImage.alt = cardData.name;
+  placeName.textContent = cardData.name;
 
   openPopup(placeImagePopup);
 }
