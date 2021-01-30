@@ -28,6 +28,7 @@ function renderCard (cardData) {
   const cardItem = cardTemplate.cloneNode(true);
 
   cardItem.querySelector('.cards-grid__image').src = cardData.link;
+  cardItem.querySelector('.cards-grid__image').alt = cardData.name;
   cardItem.querySelector('.cards-grid__heading').textContent = cardData.name;
 
   cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
@@ -91,6 +92,7 @@ function handleCardAddFormSubmit (evt) {
 
 function handlePlaceImagePopupOpen(evt) {
   placeImage.src = evt.target.closest('.cards-grid__image').src;
+  placeImage.alt = evt.target.closest('.cards-grid__image').alt;
   placeName.textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
 
   placeImagePopup.classList.add('image-popup_open');
