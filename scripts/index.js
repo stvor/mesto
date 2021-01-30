@@ -14,7 +14,7 @@ const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
 const cardAddFormElement = document.querySelector('.form_type_card-add');
 const placeNameInput = cardAddFormElement.querySelector('.form__input_type_place-name');
 const placeLinkInput = cardAddFormElement.querySelector('.form__input_type_place-link');
-const placeImagePopup = document.querySelector('.image-popup');
+const placeImagePopup = document.querySelector('.popup_type_image-popup');
 const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
 const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
@@ -46,15 +46,23 @@ function handleLikeCard (evt) {
   evt.target.classList.toggle('cards-grid__like-button_active');
 }
 
+function openPopup(popup) {
+  popup.classList.add('popup_open');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
+}
+
 function handleProfileEditPopupOpen() {
-  profileEditPopup.classList.add('popup_open');
+  openPopup(profileEditPopup);
 
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 }
 
 function handleProfileEditPopupClose() {
-  profileEditPopup.classList.remove('popup_open');
+  closePopup(profileEditPopup);
 }
 
 function handleProfileEditFormSubmit (evt) {
@@ -67,11 +75,11 @@ function handleProfileEditFormSubmit (evt) {
 }
 
 function handleCardAddPopupOpen() {
-  cardAddPopup.classList.add('popup_open');
+  openPopup(cardAddPopup);
 }
 
 function handleCardAddPopupClose() {
-  cardAddPopup.classList.remove('popup_open');
+  closePopup(cardAddPopup);
 }
 
 function handleCardAddFormSubmit (evt) {
@@ -95,11 +103,11 @@ function handlePlaceImagePopupOpen(evt) {
   placeImage.alt = evt.target.closest('.cards-grid__image').alt;
   placeName.textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
 
-  placeImagePopup.classList.add('image-popup_open');
+  openPopup(placeImagePopup);
 }
 
 function handlePlaceImagePopupClose() {
-  placeImagePopup.classList.remove('image-popup_open');
+  closePopup(placeImagePopup);
 }
 
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
