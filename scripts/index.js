@@ -21,12 +21,12 @@ function renderInitialCards () {
   initialCards.reverse().forEach(renderCard);
 }
 
-function renderCard (cardObj) {
+function renderCard (cardData) {
 
   const cardItem = cardTemplate.cloneNode(true);
 
-  cardItem.querySelector('.cards-grid__image').src = cardObj.link;
-  cardItem.querySelector('.cards-grid__heading').textContent = cardObj.name;
+  cardItem.querySelector('.cards-grid__image').src = cardData.link;
+  cardItem.querySelector('.cards-grid__heading').textContent = cardData.name;
 
   cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
   cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
