@@ -48,9 +48,6 @@ function handleProfileEditPopupOpen() {
 
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
-
-  closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
-  profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 }
 
 function handleProfileEditPopupClose() {
@@ -68,9 +65,6 @@ function handleProfileEditFormSubmit (evt) {
 
 function handleCardAddPopupOpen() {
   cardAddPopup.classList.add('popup_open');
-
-  closeCardAddPopupButton.addEventListener('click', handleCardAddPopupClose);
-  cardAddFormElement.addEventListener('submit', handleCardAddFormSubmit);
 }
 
 function handleCardAddPopupClose() {
@@ -98,16 +92,20 @@ function handlePlaceImagePopupOpen(evt) {
   placeImagePopup.querySelector('.image-popup__place-name').textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
 
   placeImagePopup.classList.add('image-popup_open');
-
-  closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
 }
 
 function handlePlaceImagePopupClose() {
   placeImagePopup.classList.remove('image-popup_open');
 }
 
-profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
-
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
+closeCardAddPopupButton.addEventListener('click', handleCardAddPopupClose);
+cardAddFormElement.addEventListener('submit', handleCardAddFormSubmit);
+
+profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
+closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
+profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
+
+closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
 
 renderInitialCards();
