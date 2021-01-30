@@ -105,8 +105,9 @@ function handlePlaceImagePopupOpen(evt) {
 function handlePlaceImagePopupClose() {
   placeImagePopup.classList.remove('image-popup_open');
 }
-renderInitialCards();
 
 profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
+
+renderInitialCards();
