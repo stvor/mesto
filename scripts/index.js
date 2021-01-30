@@ -87,6 +87,9 @@ function handleCardAddFormSubmit (evt) {
 
   renderCard(newCard);
 
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
+
   handleCardAddPopupClose();
 }
 
