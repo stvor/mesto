@@ -15,6 +15,8 @@ const cardAddFormElement = document.querySelector('.form_type_card-add');
 const placeNameInput = cardAddFormElement.querySelector('.form__input_type_place-name');
 const placeLinkInput = cardAddFormElement.querySelector('.form__input_type_place-link');
 const placeImagePopup = document.querySelector('.image-popup');
+const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
+const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 
 function renderInitialCards () {
@@ -88,8 +90,8 @@ function handleCardAddFormSubmit (evt) {
 }
 
 function handlePlaceImagePopupOpen(evt) {
-  placeImagePopup.querySelector('.image-popup__place-image').src = evt.target.closest('.cards-grid__image').src;
-  placeImagePopup.querySelector('.image-popup__place-name').textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
+  placeImage.src = evt.target.closest('.cards-grid__image').src;
+  placeName.textContent = evt.target.closest('.cards-grid__list-item').querySelector('.cards-grid__heading').textContent;
 
   placeImagePopup.classList.add('image-popup_open');
 }
