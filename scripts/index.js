@@ -20,22 +20,32 @@ const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 
 function renderInitialCards () {
-  initialCards.reverse().forEach(renderCard);
+  initialCards.reverse().forEach((card) => {
+    renderCard (card, cardsList);
+  });
 }
 
-function renderCard (cardData) {
+function renderCard (data, wrap) {
+  wrap.prepend(createCard(data));
+}
 
+function createCard (cardData) {
   const cardItem = cardTemplate.cloneNode(true);
 
-  cardItem.querySelector('.cards-grid__image').src = cardData.link;
-  cardItem.querySelector('.cards-grid__image').alt = cardData.name;
-  cardItem.querySelector('.cards-grid__heading').textContent = cardData.name;
+  const likeButton = cardItem.querySelector('.cards-grid__like-button');
+  const deleteButton = cardItem.querySelector('.cards-grid__delete-button');
+  const cardImage = cardItem.querySelector('.cards-grid__image');
+  const cardHeading = cardItem.querySelector('.cards-grid__heading');
 
-  cardItem.querySelector('.cards-grid__delete-button').addEventListener('click', handleDeleteCard);
-  cardItem.querySelector('.cards-grid__like-button').addEventListener('click', handleLikeCard);
-  cardItem.querySelector('.cards-grid__image').addEventListener('click', () => handlePlaceImagePopupOpen(cardData));
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardHeading.textContent = cardData.name;
 
-  cardsList.prepend(cardItem);
+  deleteButton.addEventListener('click', handleDeleteCard);
+  likeButton.addEventListener('click', handleLikeCard);
+  cardImage.addEventListener('click', () => handlePlaceImagePopupOpen(cardData));
+
+  return cardItem;
 }
 
 function handleDeleteCard (evt) {
@@ -90,7 +100,7 @@ function handleCardAddFormSubmit (evt) {
   newCard.name = placeNameInput.value;
   newCard.link = placeLinkInput.value;
 
-  renderCard(newCard);
+  renderCard(newCard, cardsList);
 
   placeNameInput.value = '';
   placeLinkInput.value = '';
