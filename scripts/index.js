@@ -65,8 +65,6 @@ function handleDeleteCard (evt) {
   evt.target.closest('.cards-grid__list-item').remove();
 }
 
-
-
 function handleLikeCard (evt) {
   evt.target.classList.toggle('cards-grid__like-button_active');
 }
@@ -80,8 +78,14 @@ function handleLikeCard (evt) {
 function openPopup(popup) {
   popup.classList.add('popup_open');
 
-  window.addEventListener("keydown", function (evt) {
+  window.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
       closePopup(popup);
     }
   });
