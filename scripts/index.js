@@ -78,21 +78,24 @@ function handleLikeCard (evt) {
 function openPopup(popup) {
   popup.classList.add('popup_open');
 
-  window.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
-
-  popup.addEventListener('click', (evt) => {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popup);
-    }
-  });
-}
+  window.addEventListener('keydown', (evt) => handleEsc(evt, popup));
+  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
+};
 
 function closePopup(popup) {
   popup.classList.remove('popup_open');
+}
+
+function handleEsc(evt, popup) {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
+}
+
+function handleOverlayClick(evt, popup) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popup);
+  }
 }
 
 // Попап редактирования профиля
