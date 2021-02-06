@@ -14,7 +14,7 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
-const isValid = (formElement, formInput) => {
+const checkInputValidity = (formElement, formInput) => {
   if (!formInput.validity.valid) {
     showInputError(formElement, formInput, formInput.validationMessage);
   } else {
@@ -46,7 +46,7 @@ const setEventListeners = (formElement) => {
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement);
+      checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
     });
   });
