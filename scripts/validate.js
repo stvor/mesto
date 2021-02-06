@@ -2,23 +2,27 @@ const formElement = document.querySelector('.form');
 const formInput = formElement.querySelector('.form__input');
 const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-const showInputError = (element, errorMessage) => {
-  element.classList.add('form__input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('form__input-error_active');
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.add('form__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('form__input-error_active');
 };
 
-const hideInputError = (element) => {
-  element.classList.remove('form__input_type_error');
-  formError.classList.remove('form__input-error_active');
-  formError.textContent = '';
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.remove('form__input_type_error');
+  errorElement.classList.remove('form__input-error_active');
+  errorElement.textContent = '';
 };
 
-const isValid = () => {
+const isValid = (formElement, formInput) => {
   if (!formInput.validity.valid) {
-    showInputError(formInput, formInput.validationMessage);
+    showInputError(formElement, formInput, formInput.validationMessage);
   } else {
-    hideInputError(formInput);
+    hideInputError(formElement, formInput);
   }
 };
 
@@ -26,4 +30,26 @@ formElement.addEventListener('submit', function (evt) {
   evt.preventDefault();
 });
 
-formInput.addEventListener('input', isValid);
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      isValid(formElement, inputElement)
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.form'));
+
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+    setEventListeners(formElement);
+  });
+};
+
+enableValidation();
