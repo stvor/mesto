@@ -145,7 +145,14 @@ function handleCardAddFormSubmit (evt) {
   placeNameInput.value = '';
   placeLinkInput.value = '';
 
+  console.log(evt);
+
   handleCardAddPopupClose();
+
+  const inputList = Array.from(evt.target.querySelectorAll(settings.inputSelector));
+  const buttonElement = evt.target.querySelector(settings.submitButtonSelector);
+
+  toggleButtonState(inputList, buttonElement, settings);
 }
 
 // Попап изображения
