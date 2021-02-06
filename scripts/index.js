@@ -78,17 +78,21 @@ function handleLikeCard (evt) {
 function openPopup(popup) {
   popup.classList.add('popup_open');
 
-  window.addEventListener('keydown', (evt) => handleEsc(evt, popup));
+  window.addEventListener('keydown', handleEsc);
   popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_open');
+
+  window.removeEventListener('keydown', handleEsc);
 }
 
-function handleEsc(evt, popup) {
+function handleEsc(evt) {
+  const openedPopup = document.querySelector('.popup_open');
+
   if (evt.key === 'Escape') {
-    closePopup(popup);
+    closePopup(openedPopup);
   }
 }
 
