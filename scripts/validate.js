@@ -14,6 +14,14 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
+const isValid = (formElement, formInput) => {
+  if (!formInput.validity.valid) {
+    showInputError(formElement, formInput, formInput.validationMessage);
+  } else {
+    hideInputError(formElement, formInput);
+  }
+};
+
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
@@ -25,14 +33,6 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.add('form__submit_inactive');
   } else {
     buttonElement.classList.remove('form__submit_inactive');
-  }
-};
-
-const isValid = (formElement, formInput) => {
-  if (!formInput.validity.valid) {
-    showInputError(formElement, formInput, formInput.validationMessage);
-  } else {
-    hideInputError(formElement, formInput);
   }
 };
 
