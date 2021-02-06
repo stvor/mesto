@@ -31,14 +31,18 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('form__submit_inactive');
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove('form__submit_inactive');
+    buttonElement.removeAttribute('disabled');
   }
 };
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
   const buttonElement = formElement.querySelector('.form__submit');
+
+  toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
