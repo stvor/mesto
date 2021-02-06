@@ -1,7 +1,3 @@
-const formElement = document.querySelector('.form');
-const formInput = formElement.querySelector('.form__input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
-
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -25,10 +21,6 @@ const isValid = (formElement, formInput) => {
     hideInputError(formElement, formInput);
   }
 };
-
-formElement.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-});
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
