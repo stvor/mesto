@@ -79,6 +79,12 @@ function handleLikeCard (evt) {
 // Любой попап
 function openPopup(popup) {
   popup.classList.add('popup_open');
+
+  window.addEventListener("keydown", function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
 }
 
 function closePopup(popup) {
