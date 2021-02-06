@@ -14,6 +14,20 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('form__submit_inactive');
+  } else {
+    buttonElement.classList.remove('form__submit_inactive');
+  }
+};
+
 const isValid = (formElement, formInput) => {
   if (!formInput.validity.valid) {
     showInputError(formElement, formInput, formInput.validationMessage);
@@ -24,10 +38,12 @@ const isValid = (formElement, formInput) => {
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  const buttonElement = formElement.querySelector('.form__submit');
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement)
+      isValid(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 };
