@@ -18,6 +18,7 @@ const placeImagePopup = document.querySelector('.popup_type_image-popup');
 const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
 const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
+const popupList = document.querySelectorAll('.popup');
 
 
 ////////////////////////////////////////////////////////////
@@ -79,7 +80,6 @@ function openPopup(popup) {
   popup.classList.add('popup_open');
 
   window.addEventListener('keydown', handleEsc);
-  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
 };
 
 function closePopup(popup) {
@@ -184,6 +184,9 @@ profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 // Попап изображения
 closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
 
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
+});
 
 ////////////////////////////////////////////////////////////
 // ВЫЗОВ ФУНКЦИЙ
