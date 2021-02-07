@@ -145,8 +145,6 @@ function handleCardAddFormSubmit (evt) {
   placeNameInput.value = '';
   placeLinkInput.value = '';
 
-  console.log(evt);
-
   handleCardAddPopupClose();
 
   const inputList = Array.from(evt.target.querySelectorAll(settings.inputSelector));
