@@ -54,8 +54,8 @@ export default class Card {
     evt.target.closest('.cards-grid__list-item').remove();
   }
 
-  _handleLikeCard() {
-
+  _handleLikeCard(evt) {
+    evt.target.classList.toggle('cards-grid__like-button_active');
   }
 
   generateCard() {
