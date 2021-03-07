@@ -42,12 +42,25 @@ export default class Card {
     return cardElement;
   }
 
-  _setEventListeners() {}
+  _setEventListeners() {
+    this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
+    this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
 
-// обработчики слушателей
+    // ??? this._element.querySelector('.cards-grid__image');
+
+  }
+
+  _handleDeleteCard(evt) {
+    evt.target.closest('.cards-grid__list-item').remove();
+  }
+
+  _handleLikeCard() {
+
+  }
 
   generateCard() {
     this._element = this._getTemplate();
+    this._setEventListeners();
 
     this._element.querySelector('.cards-grid__image').src = this._link;
     this._element.querySelector('.cards-grid__image').alt = this._name;
