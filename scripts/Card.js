@@ -27,8 +27,10 @@ const cardsData = [
 
 
 export default class Card {
-  constructor(cardsData, cardSelector) {
+  constructor(cardData, cardSelector) {
     this._cardSelector = cardSelector;
+    this._link = cardData.link;
+    this._name = cardData.name;
   }
 
   _getTemplate() {
@@ -44,4 +46,20 @@ export default class Card {
 
 // обработчики слушателей
 
+  generateCard() {
+    this._element = this._getTemplate();
+
+    this._element.querySelector('.cards-grid__image').src = this._link;
+    this._element.querySelector('.cards-grid__image').alt = this._name;
+    this._element.querySelector('.cards-grid__heading').textContent = this._name;
+
+    return this._element;
+  }
 }
+
+cardsData.forEach((cardData) => {
+  const card = new Card(cardData, '.card-template');
+  const cardElement = card.generateCard();
+  document.body.append(cardElement);
+});
+
