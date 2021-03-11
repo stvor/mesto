@@ -201,4 +201,6 @@ popupList.forEach((popup) => {
 ////////////////////////////////////////////////////////////
 
 // Отрисовать первые карточки
-renderInitialCards();
+// renderInitialCards();
+
+export { placeName, placeImage, placeImagePopup, openPopup, closePopup };

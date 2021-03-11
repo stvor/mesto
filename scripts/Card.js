@@ -1,3 +1,5 @@
+import { placeName, placeImage, placeImagePopup, openPopup, closePopup } from './index.js';
+
 const cardsData = [
   {
     name: 'Архыз',
@@ -25,7 +27,6 @@ const cardsData = [
   }
 ];
 
-
 export default class Card {
   constructor(cardData, cardSelector) {
     this._cardSelector = cardSelector;
@@ -45,7 +46,7 @@ export default class Card {
   _setEventListeners() {
     this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
     this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
-    this._element.querySelector('.cards-grid__image').addEventListener('click', this._handlePlaceImagePopupOpen);
+    this._element.querySelector('.cards-grid__image').addEventListener('click', () => this._handlePlaceImagePopupOpen());
   }
 
   _handleDeleteCard(evt) {
@@ -57,6 +58,7 @@ export default class Card {
   }
 
   _handlePlaceImagePopupOpen() {
+    // console.log(placeImage);
     placeImage.src = this._link;
     placeImage.alt = this._name;
     placeName.textContent = this._name;
@@ -81,4 +83,3 @@ cardsData.forEach((cardData) => {
   const cardElement = card.generateCard();
   document.body.append(cardElement);
 });
-
