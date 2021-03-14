@@ -76,9 +76,3 @@ export class Card {
     return this._element;
   }
 }
-
-cardsData.forEach((cardData) => {
-  const card = new Card(cardData, '.card-template');
-  const cardElement = card.generateCard();
-  document.body.append(cardElement);
-});

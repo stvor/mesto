@@ -145,8 +145,16 @@ popupList.forEach((popup) => {
   popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
 });
 
+
 ////////////////////////////////////////////////////////////
+// СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
 ////////////////////////////////////////////////////////////
 
+// Создать экземпляры класса Card для каждой карточки
+cardsData.forEach((cardData) => {
+  const card = new Card(cardData, '.card-template');
+  const cardElement = card.generateCard();
+  cardsList.append(cardElement);
+});
 
 export { placeName, placeImage, placeImagePopup, openPopup };
