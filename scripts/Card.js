@@ -1,6 +1,6 @@
-import { placeName, placeImage, placeImagePopup, openPopup, closePopup } from './index.js';
+import { placeName, placeImage, placeImagePopup, openPopup } from './index.js';
 
-const cardsData = [
+export const cardsData = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -27,7 +27,7 @@ const cardsData = [
   }
 ];
 
-export default class Card {
+export class Card {
   constructor(cardData, cardSelector) {
     this._cardSelector = cardSelector;
     this._link = cardData.link;

@@ -1,4 +1,4 @@
-import Card from './Card.js';
+import { Card, cardsData } from './Card.js';
 import FormValidator from './FormValidator.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -149,4 +149,4 @@ popupList.forEach((popup) => {
 ////////////////////////////////////////////////////////////
 
 
-export { placeName, placeImage, placeImagePopup, openPopup, closePopup };
+export { placeName, placeImage, placeImagePopup, openPopup };
