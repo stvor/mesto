@@ -10,7 +10,6 @@ const nameInput = document.querySelector('.form__input_type_name');
 const professionInput = document.querySelector('.form__input_type_profession');
 const profileEditFormElement = document.querySelector('.form_type_profile-edit');
 const cardsList = document.querySelector('.cards-grid__list');
-const cardTemplate = document.querySelector('.card-template').content;
 const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddPopup = document.querySelector('.popup_type_card-add');
 const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
@@ -22,56 +21,6 @@ const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
 const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 const popupList = document.querySelectorAll('.popup');
-
-
-////////////////////////////////////////////////////////////
-// ОТРИСОВКА КАРТОЧЕК
-////////////////////////////////////////////////////////////
-
-// Отрисовываем первые карточки
-function renderInitialCards () {
-  initialCards.reverse().forEach((card) => {
-    renderCard (card, cardsList);
-  });
-}
-
-// Отрисовываем одну карточку
-function renderCard (data, wrap) {
-  wrap.prepend(createCard(data));
-}
-
-// Создаем одну карточку
-function createCard (cardData) {
-  const cardItem = cardTemplate.cloneNode(true);
-
-  const likeButton = cardItem.querySelector('.cards-grid__like-button');
-  const deleteButton = cardItem.querySelector('.cards-grid__delete-button');
-  const cardImage = cardItem.querySelector('.cards-grid__image');
-  const cardHeading = cardItem.querySelector('.cards-grid__heading');
-
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardHeading.textContent = cardData.name;
-
-  deleteButton.addEventListener('click', handleDeleteCard);
-  likeButton.addEventListener('click', handleLikeCard);
-  cardImage.addEventListener('click', () => handlePlaceImagePopupOpen(cardData));
-
-  return cardItem;
-}
-
-
-////////////////////////////////////////////////////////////
-// УДАЛЕНИЕ КАРТОЧЕК
-////////////////////////////////////////////////////////////
-
-function handleDeleteCard (evt) {
-  evt.target.closest('.cards-grid__list-item').remove();
-}
-
-function handleLikeCard (evt) {
-  evt.target.classList.toggle('cards-grid__like-button_active');
-}
 
 
 ////////////////////////////////////////////////////////////
@@ -197,10 +146,7 @@ popupList.forEach((popup) => {
 });
 
 ////////////////////////////////////////////////////////////
-// ВЫЗОВ ФУНКЦИЙ
 ////////////////////////////////////////////////////////////
 
-// Отрисовать первые карточки
-// renderInitialCards();
 
 export { placeName, placeImage, placeImagePopup, openPopup, closePopup };

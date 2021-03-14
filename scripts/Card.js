@@ -58,7 +58,6 @@ export default class Card {
   }
 
   _handlePlaceImagePopupOpen() {
-    // console.log(placeImage);
     placeImage.src = this._link;
     placeImage.alt = this._name;
     placeName.textContent = this._name;
