@@ -1,5 +1,5 @@
 import { Card, cardsData } from './Card.js';
-import FormValidator from './FormValidator.js';
+import { FormValidator, settings } from './FormValidator.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditPopup = document.querySelector('.popup_type_profile-edit');
@@ -21,6 +21,7 @@ const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
 const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 const popupList = document.querySelectorAll('.popup');
+const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
 
 ////////////////////////////////////////////////////////////
@@ -155,6 +156,12 @@ cardsData.forEach((cardData) => {
   const card = new Card(cardData, '.card-template');
   const cardElement = card.generateCard();
   cardsList.append(cardElement);
+});
+
+// Создать экземпляры класса FormValidator для каждой формы
+formList.forEach((formElement) => {
+  const formValidator = new FormValidator(settings, formElement);
+  formValidator.enableValidation(settings, formElement);
 });
 
 export { placeName, placeImage, placeImagePopup, openPopup };
