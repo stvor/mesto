@@ -22,7 +22,7 @@ class FormValidator {
   }
 
   _showInputError(formElement, inputElement, errorMessage, settings) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
     inputElement.classList.add(settings.inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -30,7 +30,7 @@ class FormValidator {
   }
 
   _hideInputError() {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
     inputElement.classList.remove(settings.inputErrorClass);
     errorElement.classList.remove(settings.errorClass);
@@ -54,8 +54,8 @@ class FormValidator {
   }
 
   _setEventListeners(formElement, settings) {
-    const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+    const inputList = Array.from(this._formElement.querySelectorAll(settings.inputSelector));
+    const buttonElement = this._formElement.querySelector(settings.submitButtonSelector);
 
     this._toggleButtonState(inputList, buttonElement, settings);
 
@@ -68,7 +68,7 @@ class FormValidator {
   }
 
   enableValidation(settings, formElement) {
-    formElement.addEventListener('submit', (evt) => {
+    this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
 
