@@ -4,7 +4,7 @@
   "description": "Проект доступен по ссылке https://stvor.github.io/mesto/index.html.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack serve"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.26.2",
     "webpack-cli": "^4.5.0",
