@@ -184,10 +184,6 @@ profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 // Попап изображения
 closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
 
-popupList.forEach((popup) => {
-  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
-});
-
 
 ////////////////////////////////////////////////////////////
 // СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
