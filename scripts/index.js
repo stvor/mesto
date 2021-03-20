@@ -10,7 +10,6 @@ const nameInput = document.querySelector('.form__input_type_name');
 const professionInput = document.querySelector('.form__input_type_profession');
 const profileEditFormElement = document.querySelector('.form_type_profile-edit');
 const cardsList = document.querySelector('.cards-grid__list');
-const cardTemplate = document.querySelector('.card-template').content;
 const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddPopup = document.querySelector('.popup_type_card-add');
 const closeCardAddPopupButton = cardAddPopup.querySelector('.popup__close');
@@ -36,35 +35,10 @@ function renderCard (data, wrap) {
 
 // Создаем одну карточку
 function createCard (cardData) {
-  const cardItem = cardTemplate.cloneNode(true);
+  const card = new Card(cardData, '.card-template');
+  const cardElement = card.generateCard();
 
-  const likeButton = cardItem.querySelector('.cards-grid__like-button');
-  const deleteButton = cardItem.querySelector('.cards-grid__delete-button');
-  const cardImage = cardItem.querySelector('.cards-grid__image');
-  const cardHeading = cardItem.querySelector('.cards-grid__heading');
-
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardHeading.textContent = cardData.name;
-
-  deleteButton.addEventListener('click', handleDeleteCard);
-  likeButton.addEventListener('click', handleLikeCard);
-  cardImage.addEventListener('click', () => handlePlaceImagePopupOpen(cardData));
-
-  return cardItem;
-}
-
-
-////////////////////////////////////////////////////////////
-// УДАЛЕНИЕ КАРТОЧЕК
-////////////////////////////////////////////////////////////
-
-function handleDeleteCard (evt) {
-  evt.target.closest('.cards-grid__list-item').remove();
-}
-
-function handleLikeCard (evt) {
-  evt.target.classList.toggle('cards-grid__like-button_active');
+  return cardElement;
 }
 
 
@@ -143,20 +117,9 @@ function handleCardAddFormSubmit (evt) {
   placeLinkInput.value = '';
 
   handleCardAddPopupClose();
-
-  const inputList = Array.from(evt.target.querySelectorAll(settings.inputSelector));
-  const buttonElement = evt.target.querySelector(settings.submitButtonSelector);
 }
 
 // Попап изображения
-function handlePlaceImagePopupOpen(cardData) {
-  placeImage.src = cardData.link;
-  placeImage.alt = cardData.name;
-  placeName.textContent = cardData.name;
-
-  openPopup(placeImagePopup);
-}
-
 function handlePlaceImagePopupClose() {
   closePopup(placeImagePopup);
 }
@@ -191,9 +154,7 @@ closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose)
 
 // Создать экземпляры класса Card для каждой карточки
 cardsData.forEach((cardData) => {
-  const card = new Card(cardData, '.card-template');
-  const cardElement = card.generateCard();
-  cardsList.append(cardElement);
+  cardsList.append(createCard(cardData));
 });
 
 // Создать экземпляры класса FormValidator для каждой формы
