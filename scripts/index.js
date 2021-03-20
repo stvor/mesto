@@ -117,6 +117,9 @@ function handleCardAddFormSubmit (evt) {
   placeLinkInput.value = '';
 
   handleCardAddPopupClose();
+
+  const formValidator = new FormValidator(settings, evt.target);
+  formValidator.enableValidation(settings, evt.target);
 }
 
 // Попап изображения
