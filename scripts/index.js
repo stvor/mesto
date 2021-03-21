@@ -21,7 +21,6 @@ const placeImage = placeImagePopup.querySelector('.image-popup__place-image');
 const placeName = placeImagePopup.querySelector('.image-popup__place-name');
 const closePlaceImagePopupButton = placeImagePopup.querySelector('.image-popup__close');
 const popupList = document.querySelectorAll('.popup');
-const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
 
 ////////////////////////////////////////////////////////////
@@ -167,9 +166,10 @@ cardsData.forEach((cardData) => {
 });
 
 // Создать экземпляры класса FormValidator для каждой формы
-formList.forEach((formElement) => {
-  const formValidator = new FormValidator(settings, formElement);
-  formValidator.enableValidation();
-});
+const cardAddFormValidator = new FormValidator(settings, cardAddFormElement);
+cardAddFormValidator.enableValidation();
+
+const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
+profileEditFormValidator.enableValidation();
 
 export { placeName, placeImage, placeImagePopup, openPopup };
