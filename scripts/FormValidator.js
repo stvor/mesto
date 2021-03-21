@@ -12,6 +12,7 @@ class FormValidator {
     this._settings = settings;
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._settings.submitButtonSelector);
   }
 
   _checkInputValidity(formInput) {
@@ -39,8 +40,6 @@ class FormValidator {
   }
 
   _toggleButtonState() {
-    this._buttonElement = this._formElement.querySelector(this._settings.submitButtonSelector);
-
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._settings.inactiveButtonClass);
       this._buttonElement.setAttribute('disabled', true);
