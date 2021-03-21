@@ -117,9 +117,6 @@ function handleCardAddFormSubmit (evt) {
   placeLinkInput.value = '';
 
   handleCardAddPopupClose();
-
-  const formValidator = new FormValidator(settings, evt.target);
-  formValidator.enableValidation(settings, evt.target);
 }
 
 // Попап изображения
@@ -163,7 +160,7 @@ cardsData.forEach((cardData) => {
 // Создать экземпляры класса FormValidator для каждой формы
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(settings, formElement);
-  formValidator.enableValidation(settings, formElement);
+  formValidator.enableValidation();
 });
 
 export { placeName, placeImage, placeImagePopup, openPopup };
