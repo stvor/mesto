@@ -15,13 +15,13 @@ class FormValidator {
 
   _checkInputValidity(formElement, formInput, settings) {
     if (!formInput.validity.valid) {
-      this._showInputError(formElement, formInput, formInput.validationMessage, settings);
+      this._showInputError(formInput, formInput.validationMessage, settings);
     } else {
-      this._hideInputError(formElement, formInput, settings);
+      this._hideInputError(formInput, settings);
     }
   }
 
-  _showInputError(formElement, inputElement, errorMessage, settings) {
+  _showInputError(inputElement, errorMessage, settings) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
     inputElement.classList.add(settings.inputErrorClass);
@@ -29,7 +29,7 @@ class FormValidator {
     errorElement.classList.add(settings.errorClass);
   }
 
-  _hideInputError(formElement, inputElement, settings) {
+  _hideInputError(inputElement, settings) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
 
     inputElement.classList.remove(settings.inputErrorClass);
