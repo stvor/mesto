@@ -80,8 +80,7 @@ function handleOverlayClick(evt, popup) {
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
-  const formValidator = new FormValidator(settings, profileEditPopup);
-  formValidator.resetValidation();
+  profileEditFormValidator.resetValidation();
 
   openPopup(profileEditPopup);
 
@@ -104,8 +103,7 @@ function handleProfileEditFormSubmit (evt) {
 
 // Попап добавления новой карточки
 function handleCardAddPopupOpen() {
-  const formValidator = new FormValidator(settings, cardAddPopup);
-  formValidator.resetValidation();
+  cardAddFormValidator.resetValidation();
 
   openPopup(cardAddPopup);
 }
