@@ -46,7 +46,7 @@ export class Card {
   _setEventListeners() {
     this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
     this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
-    this._element.querySelector('.cards-grid__image').addEventListener('click', () => this._handlePlaceImagePopupOpen());
+    this._cardImage.addEventListener('click', () => this._handlePlaceImagePopupOpen());
   }
 
   _handleDeleteCard(evt) {
@@ -67,11 +67,14 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
+    this._cardImage = this._element.querySelector('.cards-grid__image');
+    this._cardHeading = this._element.querySelector('.cards-grid__heading');
 
-    this._element.querySelector('.cards-grid__image').src = this._link;
-    this._element.querySelector('.cards-grid__image').alt = this._name;
-    this._element.querySelector('.cards-grid__heading').textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardHeading.textContent = this._name;
+
+    this._setEventListeners();
 
     return this._element;
   }
