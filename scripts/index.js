@@ -48,9 +48,6 @@ function createCard (cardData) {
 
 // Любой попап
 function openPopup(popup) {
-  const formValidator = new FormValidator(settings, popup);
-  formValidator.resetValidation();
-
   popup.classList.add('popup_open');
 
   window.addEventListener('keydown', handleEsc);
@@ -84,6 +81,9 @@ function handleOverlayClick(evt, popup) {
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
+  const formValidator = new FormValidator(settings, profileEditPopup);
+  formValidator.resetValidation();
+
   openPopup(profileEditPopup);
 
   nameInput.value = profileName.textContent;
@@ -105,6 +105,9 @@ function handleProfileEditFormSubmit (evt) {
 
 // Попап добавления новой карточки
 function handleCardAddPopupOpen() {
+  const formValidator = new FormValidator(settings, cardAddPopup);
+  formValidator.resetValidation();
+
   openPopup(cardAddPopup);
 }
 
