@@ -37,6 +37,16 @@ class FormValidator {
     errorElement.textContent = '';
   }
 
+  _resetValidation() {
+    const inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+
+    inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+
+    this._toggleButtonState();
+  }
+
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(this._settings.inactiveButtonClass);
