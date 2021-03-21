@@ -55,12 +55,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_open');
 
-  const inputList = Array.from(popup.querySelectorAll(settings.inputSelector));
-
-  inputList.forEach((inputElement) => {
-    inputElement.value = '';
-  });
-
   window.removeEventListener('keydown', handleEsc);
 }
 
@@ -80,9 +74,12 @@ function handleOverlayClick(evt, popup) {
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
-  profileEditFormValidator.resetValidation();
+  nameInput.value = '';
+  professionInput.value = '';
 
   openPopup(profileEditPopup);
+
+  profileEditFormValidator.resetValidation();
 
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
@@ -103,9 +100,12 @@ function handleProfileEditFormSubmit (evt) {
 
 // Попап добавления новой карточки
 function handleCardAddPopupOpen() {
-  cardAddFormValidator.resetValidation();
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
 
   openPopup(cardAddPopup);
+
+  cardAddFormValidator.resetValidation();
 }
 
 function handleCardAddPopupClose() {
