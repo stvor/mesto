@@ -48,6 +48,9 @@ function createCard (cardData) {
 
 // Любой попап
 function openPopup(popup) {
+  const formValidator = new FormValidator(settings, popup);
+  formValidator.resetValidation();
+
   popup.classList.add('popup_open');
 
   window.addEventListener('keydown', handleEsc);
@@ -55,6 +58,12 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_open');
+
+  const inputList = Array.from(popup.querySelectorAll(settings.inputSelector));
+
+  inputList.forEach((inputElement) => {
+    inputElement.value = '';
+  });
 
   window.removeEventListener('keydown', handleEsc);
 }
@@ -112,9 +121,6 @@ function handleCardAddFormSubmit (evt) {
   newCard.link = placeLinkInput.value;
 
   renderCard(newCard, cardsList);
-
-  placeNameInput.value = '';
-  placeLinkInput.value = '';
 
   handleCardAddPopupClose();
 }
