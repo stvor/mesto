@@ -200,7 +200,16 @@ const profilePopupWithForm = new PopupWithForm({
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
   handleFormSubmit: () => {
-    // создавать новую карточку
+    const newCard = {};
+
+    newCard.name = placeNameInput.value;
+    newCard.link = placeLinkInput.value;
+
+    const card = new Card(newCard, '.card-template');
+
+    const cardElement = card.generateCard();
+
+    cardsList.addItem(cardElement);
 
     cardAddPopupWithForm.close();
   }
