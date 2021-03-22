@@ -28,11 +28,10 @@ export const cardsData = [
 ];
 
 export class Card {
-  constructor({ cardData, cardSelector, handleCardClick }) {
+  constructor(cardData, cardSelector) {
     this._cardSelector = cardSelector;
     this._link = cardData.link;
     this._name = cardData.name;
-    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -47,7 +46,7 @@ export class Card {
   _setEventListeners() {
     this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
     this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
-    this._cardImage.addEventListener('click', () => this._handleCardClick());
+    this._cardImage.addEventListener('click', () => this._handlePlaceImagePopupOpen());
   }
 
   _handleDeleteCard(evt) {
@@ -58,13 +57,13 @@ export class Card {
     evt.target.classList.toggle('cards-grid__like-button_active');
   }
 
-  // _handlePlaceImagePopupOpen() {
-  //   placeImage.src = this._link;
-  //   placeImage.alt = this._name;
-  //   placeName.textContent = this._name;
+  _handlePlaceImagePopupOpen() {
+    placeImage.src = this._link;
+    placeImage.alt = this._name;
+    placeName.textContent = this._name;
 
-  //   openPopup(placeImagePopup);
-  // }
+    openPopup(placeImagePopup);
+  }
 
   generateCard() {
     this._element = this._getTemplate();

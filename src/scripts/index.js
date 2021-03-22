@@ -35,16 +35,7 @@ function renderCard (data, wrap) {
 
 // Создаем одну карточку
 function createCard (cardData) {
-  const card = new Card({
-    cardData: cardData,
-    cardSelector: '.card-template',
-    handleCardClick: function() {
-      const popupWithImage = new PopupWithImage('.popup_type_image-popup', cardData);
-
-      popupWithImage.open();
-    }
-  });
-
+  const card = new Card(cardData, '.card-template');
   const cardElement = card.generateCard();
 
   return cardElement;
