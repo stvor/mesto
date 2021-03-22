@@ -5,11 +5,12 @@ export class PopupWithImage extends Popup {
     super(popupSelector);
     this._link = cardData.link;
     this._name = cardData.name;
-    this._placeImage = this._popup.querySelector('.image-popup__place-image');
-    this._placeName = this._popup.querySelector('.image-popup__place-name');
   }
 
   open() {
+    this._placeImage = this._popup.querySelector('.image-popup__place-image');
+    this._placeName = this._popup.querySelector('.image-popup__place-name');
+
     this._placeImage.src = this._link;
     this._placeName.alt = this._name;
     this._placeName.textContent = this._name;
