@@ -47,25 +47,25 @@ function createCard (cardData) {
 ////////////////////////////////////////////////////////////
 
 // Любой попап
-// function openPopup(popup) {
-//   popup.classList.add('popup_open');
+function openPopup(popup) {
+  popup.classList.add('popup_open');
 
-//   window.addEventListener('keydown', handleEsc);
-// };
+  window.addEventListener('keydown', handleEsc);
+};
 
-// function closePopup(popup) {
-//   popup.classList.remove('popup_open');
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
 
-//   window.removeEventListener('keydown', handleEsc);
-// }
+  window.removeEventListener('keydown', handleEsc);
+}
 
-// function handleEsc(evt) {
-//   const openedPopup = document.querySelector('.popup_open');
+function handleEsc(evt) {
+  const openedPopup = document.querySelector('.popup_open');
 
-//   if (evt.key === 'Escape') {
-//     closePopup(openedPopup);
-//   }
-// }
+  if (evt.key === 'Escape') {
+    closePopup(openedPopup);
+  }
+}
 
 function handleOverlayClick(evt, popup) {
   if (evt.target === evt.currentTarget) {
