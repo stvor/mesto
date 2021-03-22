@@ -3,6 +3,7 @@ import { Card, cardsData } from '../components/Card.js';
 import { FormValidator, settings } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -134,9 +135,9 @@ function handleCardAddPopupOpen() {
 // }
 
 // Попап изображения
-function handlePlaceImagePopupClose() {
-  closePopup(placeImagePopup);
-}
+// function handlePlaceImagePopupClose() {
+//   closePopup(placeImagePopup);
+// }
 
 
 ////////////////////////////////////////////////////////////
@@ -159,7 +160,7 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 // profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 
 // Попап изображения
-closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
+// closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
 
 
 ////////////////////////////////////////////////////////////
@@ -175,7 +176,23 @@ closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose)
 const cardsList = new Section({
   items: cardsData,
   renderer: (item) => {
-    const card = new Card(item, '.card-template');
+    const card = new Card({
+      cardData: item,
+      cardSelector: '.card-template',
+      handleCardClick: () => {
+        const placePopupWithImage = new PopupWithImage({
+          popupSelector: '.popup_type_image-popup',
+          cardData: {
+            name: 'Иваново',
+            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+          }
+        });
+
+        placePopupWithImage.open();
+        placePopupWithImage.setEventListeners();
+
+      }
+    });
 
     const cardElement = card.generateCard();
 
@@ -205,7 +222,23 @@ const cardAddPopupWithForm = new PopupWithForm({
     newCard.name = placeNameInput.value;
     newCard.link = placeLinkInput.value;
 
-    const card = new Card(newCard, '.card-template');
+    const card = new Card({
+      cardData: newCard,
+      cardSelector: '.card-template',
+      handleCardClick: () => {
+        const placePopupWithImage = new PopupWithImage({
+          popupSelector: '.popup_type_image-popup',
+          cardData: {
+            name: 'Иваново',
+            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+          }
+        });
+
+        placePopupWithImage.open();
+        placePopupWithImage.setEventListeners();
+
+      }
+    });
 
     const cardElement = card.generateCard();
 
