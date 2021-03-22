@@ -2,6 +2,8 @@ import './index.css';
 import { Card, cardsData } from '../components/Card.js';
 import { FormValidator, settings } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditPopup = document.querySelector('.popup_type_profile-edit');
@@ -49,37 +51,39 @@ const popupList = document.querySelectorAll('.popup');
 
 // Любой попап
 function openPopup(popup) {
-  popup.classList.add('popup_open');
+//   popup.classList.add('popup_open');
 
-  window.addEventListener('keydown', handleEsc);
+//   window.addEventListener('keydown', handleEsc);
 };
 
-function closePopup(popup) {
-  popup.classList.remove('popup_open');
+// function closePopup(popup) {
+//   popup.classList.remove('popup_open');
 
-  window.removeEventListener('keydown', handleEsc);
-}
+//   window.removeEventListener('keydown', handleEsc);
+// }
 
-function handleEsc(evt) {
-  const openedPopup = document.querySelector('.popup_open');
+// function handleEsc(evt) {
+//   const openedPopup = document.querySelector('.popup_open');
 
-  if (evt.key === 'Escape') {
-    closePopup(openedPopup);
-  }
-}
+//   if (evt.key === 'Escape') {
+//     closePopup(openedPopup);
+//   }
+// }
 
-function handleOverlayClick(evt, popup) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(popup);
-  }
-}
+// function handleOverlayClick(evt, popup) {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(popup);
+//   }
+// }
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
   nameInput.value = '';
   professionInput.value = '';
 
-  openPopup(profileEditPopup);
+  // openPopup(profileEditPopup);
+  profilePopupWithForm.open();
+  profilePopupWithForm.setEventListeners();
 
   profileEditFormValidator.resetValidation();
 
@@ -87,18 +91,18 @@ function handleProfileEditPopupOpen() {
   professionInput.value = profileProfession.textContent;
 }
 
-function handleProfileEditPopupClose() {
-  closePopup(profileEditPopup);
-}
+// function handleProfileEditPopupClose() {
+//   closePopup(profileEditPopup);
+// }
 
-function handleProfileEditFormSubmit (evt) {
-  evt.preventDefault();
+// function handleProfileEditFormSubmit (evt) {
+//   evt.preventDefault();
 
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = professionInput.value;
+//   profileName.textContent = nameInput.value;
+//   profileProfession.textContent = professionInput.value;
 
-  handleProfileEditPopupClose();
-}
+//   handleProfileEditPopupClose();
+// }
 
 // Попап добавления новой карточки
 function handleCardAddPopupOpen() {
@@ -138,9 +142,9 @@ function handlePlaceImagePopupClose() {
 ////////////////////////////////////////////////////////////
 
 // Все попапы
-popupList.forEach((popup) => {
-  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
-});
+// popupList.forEach((popup) => {
+//   popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
+// });
 
 // Попап добавления новой карточки
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
@@ -150,7 +154,7 @@ cardAddFormElement.addEventListener('submit', handleCardAddFormSubmit);
 // Попап редактирования профиля
 profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 // closeProfileEditPopupButton.addEventListener('click', handleProfileEditPopupClose);
-profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
+// profileEditFormElement.addEventListener('submit', handleProfileEditFormSubmit);
 
 // Попап изображения
 closePlaceImagePopupButton.addEventListener('click', handlePlaceImagePopupClose);
@@ -178,6 +182,19 @@ const cardsList = new Section({
 }, '.cards-grid__list');
 
 cardsList.renderItems();
+
+// Создать экземпляр класса PopupWithForm для попапа профиля
+const profilePopupWithForm = new PopupWithForm({
+  popupSelector: '.popup_type_profile-edit',
+  handleFormSubmit: () => {
+    profileName.textContent = nameInput.value;
+    profileProfession.textContent = professionInput.value;
+
+    profilePopupWithForm.close();
+  }
+});
+
+// Создать экземпляр класса PopupWithForm для попапа добавления новой карточки
 
 // Создать экземпляры класса FormValidator для каждой формы
 const cardAddFormValidator = new FormValidator(settings, cardAddFormElement);
