@@ -1,7 +1,7 @@
-import '../pages/index.css';
-import { Card, cardsData } from './Card.js';
-import { FormValidator, settings } from './FormValidator.js';
-import { Section } from './Section.js';
+import './index.css';
+import { Card, cardsData } from '../components/Card.js';
+import { FormValidator, settings } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditPopup = document.querySelector('.popup_type_profile-edit');
