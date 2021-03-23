@@ -51,11 +51,11 @@ const popupList = document.querySelectorAll('.popup');
 ////////////////////////////////////////////////////////////
 
 // Любой попап
-function openPopup(popup) {
+// function openPopup(popup) {
 //   popup.classList.add('popup_open');
 
   // window.addEventListener('keydown', handleEsc);
-};
+// };
 
 function closePopup(popup) {
   popup.classList.remove('popup_open');
@@ -252,4 +252,4 @@ cardAddFormValidator.enableValidation();
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
 
-export { placeName, placeImage, placeImagePopup, openPopup };
+export { placeName, placeImage, placeImagePopup };

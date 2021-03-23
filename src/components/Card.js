@@ -1,4 +1,4 @@
-import { placeName, placeImage, placeImagePopup, openPopup } from '../pages/index.js';
+import { placeName, placeImage, placeImagePopup } from '../pages/index.js';
 
 export const cardsData = [
   {
