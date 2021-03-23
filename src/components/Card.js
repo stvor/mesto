@@ -1,5 +1,3 @@
-import { placeName, placeImage, placeImagePopup } from '../pages/index.js';
-
 export const cardsData = [
   {
     name: 'Архыз',

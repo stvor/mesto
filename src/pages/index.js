@@ -107,8 +107,8 @@ function handleProfileEditPopupOpen() {
 
 // Попап добавления новой карточки
 function handleCardAddPopupOpen() {
-  placeNameInput.value = '';
-  placeLinkInput.value = '';
+  // placeNameInput.value = '';
+  // placeLinkInput.value = '';
 
   // openPopup(cardAddPopup);
   cardAddPopupWithForm.open();
@@ -250,5 +250,3 @@ cardAddFormValidator.enableValidation();
 
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
-
-export { placeName, placeImage, placeImagePopup };
