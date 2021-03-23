@@ -175,21 +175,9 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 const cardsList = new Section({
   items: cardsData,
   renderer: (item) => {
-    const card = new Card({
-      cardData: item,
-      cardSelector: '.card-template',
-      handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
+    const newCardElement = createCard(item);
 
-        placePopupWithImage.open(item);
-        placePopupWithImage.setEventListeners();
-
-      }
-    });
-
-    const cardElement = card.generateCard();
-
-    cardsList.addItem(cardElement);
+    cardsList.addItem(newCardElement);
   }
 }, '.cards-grid__list');
 
@@ -216,21 +204,9 @@ const cardAddPopupWithForm = new PopupWithForm({
     newCard.name = placeNameInput.value;
     newCard.link = placeLinkInput.value;
 
-    const card = new Card({
-      cardData: newCard,
-      cardSelector: '.card-template',
-      handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
+    const newCardElement = createCard(newCard);
 
-        placePopupWithImage.open(item);
-        placePopupWithImage.setEventListeners();
-
-      }
-    });
-
-    const cardElement = card.generateCard();
-
-    cardsList.addItem(cardElement);
+    cardsList.addItem(newCardElement);
 
     cardAddPopupWithForm.close();
   }
@@ -250,3 +226,21 @@ cardAddFormValidator.enableValidation();
 
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
+
+function createCard(item) {
+  const card = new Card({
+    cardData: item,
+    cardSelector: '.card-template',
+    handleCardClick: (item) => {
+      const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
+
+      placePopupWithImage.open(item);
+      placePopupWithImage.setEventListeners();
+
+    }
+  });
+
+  const cardElement = card.generateCard();
+
+  return cardElement;
+};
