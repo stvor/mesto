@@ -236,6 +236,12 @@ const cardAddPopupWithForm = new PopupWithForm({
   }
 });
 
+// Создать класс UserInfo для отображения профиля
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__name',
+  professionSelector: '.profile__profession'
+});
+
 // Создать экземпляры класса FormValidator для каждой формы
 const cardAddFormValidator = new FormValidator(settings, cardAddFormElement);
 cardAddFormValidator.enableValidation();
