@@ -79,17 +79,21 @@ function handleOverlayClick(evt, popup) {
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
-  nameInput.value = '';
-  professionInput.value = '';
+  const userData = userInfo.getUserInfo();
 
-  // openPopup(profileEditPopup);
+  nameInput.value = userData.userName;
+  professionInput.value = userData.profession;
+
   profilePopupWithForm.open();
   profilePopupWithForm.setEventListeners();
 
   profileEditFormValidator.resetValidation();
 
-  nameInput.value = profileName.textContent;
-  professionInput.value = profileProfession.textContent;
+  // nameInput.value = '';
+  // professionInput.value = '';
+
+  // openPopup(profileEditPopup);
+  // profilePopupWithForm.open();
 }
 
 // function handleProfileEditPopupClose() {
@@ -199,9 +203,8 @@ cardsList.renderItems();
 // Создать экземпляр класса PopupWithForm для попапа профиля
 const profilePopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_profile-edit',
-  handleFormSubmit: () => {
-    profileName.textContent = nameInput.value;
-    profileProfession.textContent = professionInput.value;
+  handleFormSubmit: (userData) => {
+    userInfo.setUserInfo(userData.name, userData.profession);
 
     profilePopupWithForm.close();
   }
