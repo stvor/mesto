@@ -179,9 +179,9 @@ const cardsList = new Section({
       cardData: item,
       cardSelector: '.card-template',
       handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup', item);
+        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
 
-        placePopupWithImage.open();
+        placePopupWithImage.open(item);
         placePopupWithImage.setEventListeners();
 
       }
@@ -220,9 +220,9 @@ const cardAddPopupWithForm = new PopupWithForm({
       cardData: newCard,
       cardSelector: '.card-template',
       handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup', item);
+        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
 
-        placePopupWithImage.open();
+        placePopupWithImage.open(item);
         placePopupWithImage.setEventListeners();
 
       }
