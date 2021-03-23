@@ -57,14 +57,6 @@ export class Card {
     evt.target.classList.toggle('cards-grid__like-button_active');
   }
 
-  // _handlePlaceImagePopupOpen() {
-  //   placeImage.src = this._link;
-  //   placeImage.alt = this._name;
-  //   placeName.textContent = this._name;
-
-  //   openPopup(placeImagePopup);
-  // }
-
   generateCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.cards-grid__image');
