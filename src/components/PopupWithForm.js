@@ -26,6 +26,18 @@ export class PopupWithForm extends Popup {
     });
   }
 
+  open(data) {
+    if (data) {
+      this._nameInput = this._popup.querySelector('.form__input_type_name');
+      this._professionInput = this._popup.querySelector('.form__input_type_profession');
+
+      this._nameInput.value = data.userName;
+      this._professionInput.value = data.profession;
+    }
+
+      super.open();
+  }
+
   close() {
     this._form.reset();
 

@@ -81,10 +81,7 @@ function handleOverlayClick(evt, popup) {
 function handleProfileEditPopupOpen() {
   const userData = userInfo.getUserInfo();
 
-  nameInput.value = userData.userName;
-  professionInput.value = userData.profession;
-
-  profilePopupWithForm.open();
+  profilePopupWithForm.open(userData);
   profilePopupWithForm.setEventListeners();
 
   profileEditFormValidator.resetValidation();
