@@ -180,10 +180,7 @@ const cardsList = new Section({
       cardData: item,
       cardSelector: '.card-template',
       handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage({
-          popupSelector: '.popup_type_image-popup',
-          cardData: item
-        });
+        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup', item);
 
         placePopupWithImage.open();
         placePopupWithImage.setEventListeners();
@@ -223,10 +220,7 @@ const cardAddPopupWithForm = new PopupWithForm({
       cardData: newCard,
       cardSelector: '.card-template',
       handleCardClick: (item) => {
-        const placePopupWithImage = new PopupWithImage({
-          popupSelector: '.popup_type_image-popup',
-          cardData: item
-        });
+        const placePopupWithImage = new PopupWithImage('.popup_type_image-popup', item);
 
         placePopupWithImage.open();
         placePopupWithImage.setEventListeners();
