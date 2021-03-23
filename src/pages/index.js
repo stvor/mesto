@@ -82,7 +82,6 @@ function handleProfileEditPopupOpen() {
   const userData = userInfo.getUserInfo();
 
   profilePopupWithForm.open(userData);
-  profilePopupWithForm.setEventListeners();
 
   profileEditFormValidator.resetValidation();
 
@@ -113,7 +112,6 @@ function handleCardAddPopupOpen() {
 
   // openPopup(cardAddPopup);
   cardAddPopupWithForm.open();
-  cardAddPopupWithForm.setEventListeners();
 
   cardAddFormValidator.resetValidation();
 }
@@ -207,6 +205,8 @@ const profilePopupWithForm = new PopupWithForm({
   }
 });
 
+profilePopupWithForm.setEventListeners();
+
 // Создать экземпляр класса PopupWithForm для попапа добавления новой карточки
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
@@ -235,6 +235,8 @@ const cardAddPopupWithForm = new PopupWithForm({
     cardAddPopupWithForm.close();
   }
 });
+
+cardAddPopupWithForm.setEventListeners();
 
 // Создать класс UserInfo для отображения профиля
 const userInfo = new UserInfo({
