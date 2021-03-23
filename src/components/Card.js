@@ -32,6 +32,7 @@ export class Card {
     this._cardSelector = cardSelector;
     this._link = cardData.link;
     this._name = cardData.name;
+    this._cardData = cardData;
     this._handleCardClick = handleCardClick;
   }
 
@@ -47,7 +48,7 @@ export class Card {
   _setEventListeners() {
     this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
     this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
-    this._cardImage.addEventListener('click', (evt) => this._handleCardClick(evt));
+    this._cardImage.addEventListener('click', () => this._handleCardClick(this._cardData));
   }
 
   _handleDeleteCard(evt) {

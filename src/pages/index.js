@@ -179,13 +179,10 @@ const cardsList = new Section({
     const card = new Card({
       cardData: item,
       cardSelector: '.card-template',
-      handleCardClick: () => {
+      handleCardClick: (item) => {
         const placePopupWithImage = new PopupWithImage({
           popupSelector: '.popup_type_image-popup',
-          cardData: {
-            name: 'Иваново',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-          }
+          cardData: item
         });
 
         placePopupWithImage.open();
@@ -225,13 +222,10 @@ const cardAddPopupWithForm = new PopupWithForm({
     const card = new Card({
       cardData: newCard,
       cardSelector: '.card-template',
-      handleCardClick: () => {
+      handleCardClick: (item) => {
         const placePopupWithImage = new PopupWithImage({
           popupSelector: '.popup_type_image-popup',
-          cardData: {
-            name: 'Иваново',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-          }
+          cardData: item
         });
 
         placePopupWithImage.open();
