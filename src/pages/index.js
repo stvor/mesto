@@ -54,14 +54,14 @@ const popupList = document.querySelectorAll('.popup');
 function openPopup(popup) {
 //   popup.classList.add('popup_open');
 
-//   window.addEventListener('keydown', handleEsc);
+  // window.addEventListener('keydown', handleEsc);
 };
 
-// function closePopup(popup) {
-//   popup.classList.remove('popup_open');
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
 
-//   window.removeEventListener('keydown', handleEsc);
-// }
+  // window.removeEventListener('keydown', handleEsc);
+}
 
 // function handleEsc(evt) {
 //   const openedPopup = document.querySelector('.popup_open');
@@ -71,11 +71,11 @@ function openPopup(popup) {
 //   }
 // }
 
-// function handleOverlayClick(evt, popup) {
-//   if (evt.target === evt.currentTarget) {
-//     closePopup(popup);
-//   }
-// }
+function handleOverlayClick(evt, popup) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popup);
+  }
+}
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
@@ -145,9 +145,9 @@ function handleCardAddPopupOpen() {
 ////////////////////////////////////////////////////////////
 
 // Все попапы
-// popupList.forEach((popup) => {
-//   popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
-// });
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => handleOverlayClick(evt, popup));
+});
 
 // Попап добавления новой карточки
 cardAddButton.addEventListener('click', handleCardAddPopupOpen);
