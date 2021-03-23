@@ -198,11 +198,11 @@ profilePopupWithForm.setEventListeners();
 // Создать экземпляр класса PopupWithForm для попапа добавления новой карточки
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
-  handleFormSubmit: () => {
+  handleFormSubmit: (cardData) => {
     const newCard = {};
 
-    newCard.name = placeNameInput.value;
-    newCard.link = placeLinkInput.value;
+    newCard.name = cardData['place-name'];
+    newCard.link = cardData['place-link'];
 
     const newCardElement = createCard(newCard);
 
