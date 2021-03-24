@@ -100,16 +100,15 @@ cardAddFormValidator.enableValidation();
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
 
+const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
+placePopupWithImage.setEventListeners();
+
 function createCard(item) {
   const card = new Card({
     cardData: item,
     cardSelector: '.card-template',
     handleCardClick: (item) => {
-      const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
-
       placePopupWithImage.open(item);
-      placePopupWithImage.setEventListeners();
-
     }
   });
 
