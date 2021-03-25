@@ -5,11 +5,32 @@ import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
+import { Api } from '../components/Api.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditFormElement = document.querySelector('.form_type_profile-edit');
 const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddFormElement = document.querySelector('.form_type_card-add');
+
+const options = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: '6320c87e-58cc-431b-b75b-473d8cbd6c68',
+    'Content-Type': 'application/json',
+  },
+};
+
+const api = new Api(options);
+
+api.getUser()
+  .then(data => {
+    console.log(data);
+  });
+
+api.getInitialCards()
+.then(data => {
+  console.log(data);
+});
 
 
 // Попап редактирования профиля
@@ -116,3 +137,4 @@ function createCard(item) {
 
   return cardElement;
 };
+
