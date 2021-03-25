@@ -73,23 +73,23 @@ export class Api {
         headers: {
           authorization: this.authorization,
           'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+        },
+        body: JSON.stringify({
         // todo: отправлять карточку из формы
-        name: 'Marie Skłodowska Curie',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-      }),
-    })
-    .then(res => {
-      if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+          name: 'Marie Skłodowska Curie',
+          link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+        }),
       })
-      .catch(err => {
-        Promise.reject(err);
-      });
+        .then(res => {
+          if (res.ok) {
+              return res.json();
+            }
+
+            return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+          })
+          .catch(err => {
+            Promise.reject(err);
+          });
     }
 
   deleteCard() {
@@ -136,6 +136,29 @@ export class Api {
       headers: {
         authorization: this.authorization,
       },
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+      })
+      .catch(err => {
+        Promise.reject(err);
+      });
+  }
+
+  setAvatar() {
+    return fetch(`${this.url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this.authorization,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: "https://img4.goodfon.ru/wallpaper/nbig/c/49/my-little-pony-druzhba-eto-chudo-raznotsvetnyi-orange-fiolet.jpg",
+      }),
     })
       .then(res => {
         if (res.ok) {

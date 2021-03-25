@@ -57,6 +57,11 @@ api.getInitialCards()
 //   console.log(data);
 // });
 
+// api.setAvatar()
+// .then(data => {
+//   console.log(data);
+// });
+
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
   const userData = userInfo.getUserInfo();
