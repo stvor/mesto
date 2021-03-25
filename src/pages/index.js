@@ -24,25 +24,14 @@ const api = new Api(options);
 api.getUser()
   .then(data => {
     console.log(data);
-
     userInfo.setUserInfo(data.name, data.about, data.avatar);
   });
 
-// api.getInitialCards()
-//   .then(data => {
-//     // todo: выводить количество лайков на страницу
-
-//     const cardsList = new Section({
-//       items: data,
-//       renderer: (item) => {
-//         const newCardElement = createCard(item);
-
-//         cardsList.addItem(newCardElement);
-//       }
-//     }, '.cards-grid__list');
-
-//     cardsList.renderItems();
-//   });
+api.getInitialCards()
+  .then(data => {
+    // todo: выводить количество лайков на страницу
+    console.log(data);
+  });
 
 // api.addCard()
 // .then(data => {
@@ -105,6 +94,18 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 ////////////////////////////////////////////////////////////
 // СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
 ////////////////////////////////////////////////////////////
+
+// Создать класс Section для отрисовки карточек
+const cardsList = new Section({
+  items: cardsData,
+  renderer: (item) => {
+    const newCardElement = createCard(item);
+
+    cardsList.addItem(newCardElement);
+  }
+}, '.cards-grid__list');
+
+cardsList.renderItems();
 
 // Создать экземпляр класса PopupWithForm для попапа профиля
 const profilePopupWithForm = new PopupWithForm({
