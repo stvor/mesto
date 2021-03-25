@@ -66,4 +66,29 @@ export class Api {
         Promise.reject(err);
       });
   }
+
+  addCard() {
+    return fetch(`${this.url}/cards`, {
+      method: 'POST',
+      headers: {
+        authorization: this.authorization,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        // todo: отправлять карточку из формы
+        name: 'Marie Skłodowska Curie',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+      })
+      .catch(err => {
+        Promise.reject(err);
+      });
+  }
 }

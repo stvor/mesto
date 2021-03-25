@@ -28,13 +28,19 @@ api.getUser()
 
 api.getInitialCards()
 .then(data => {
+  // todo: выводить количество лайков на страницу
   console.log(data);
 });
 
-api.setUser()
+api.addCard()
 .then(data => {
   console.log(data);
 });
+
+// api.setUser()
+// .then(data => {
+//   console.log(data);
+// });
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
