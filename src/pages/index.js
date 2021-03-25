@@ -27,12 +27,6 @@ api.getUser()
     userInfo.setUserInfo(data.name, data.about, data.avatar);
   });
 
-api.getInitialCards()
-  .then(data => {
-    // todo: выводить количество лайков на страницу
-    console.log(data);
-  });
-
 // api.addCard()
 // .then(data => {
 //   console.log(data);
@@ -97,7 +91,6 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 
 // Создать класс Section для отрисовки карточек
 const cardsList = new Section({
-  items: cardsData,
   renderer: (item) => {
     const newCardElement = createCard(item);
 
@@ -105,7 +98,10 @@ const cardsList = new Section({
   }
 }, '.cards-grid__list');
 
-cardsList.renderItems();
+api.getInitialCards()
+  .then(data => {
+    cardsList.renderItems(data);
+  });
 
 // Создать экземпляр класса PopupWithForm для попапа профиля
 const profilePopupWithForm = new PopupWithForm({
