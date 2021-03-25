@@ -30,6 +30,7 @@ export class Card {
     this._cardSelector = cardSelector;
     this._link = cardData.link;
     this._name = cardData.name;
+    this._likes = cardData.likes.length;
     this._cardData = cardData;
     this._handleCardClick = handleCardClick;
   }
@@ -61,10 +62,12 @@ export class Card {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.cards-grid__image');
     this._cardHeading = this._element.querySelector('.cards-grid__heading');
+    this._cardLikes = this._element.querySelector('.cards-grid__likes-count');
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardHeading.textContent = this._name;
+    this._cardLikes.textContent = this._likes;
 
     this._setEventListeners();
 

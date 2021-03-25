@@ -105,6 +105,7 @@ const cardsList = new Section({
 
 api.getInitialCards()
   .then(data => {
+    console.log(data);
     cardsList.renderItems(data);
   })
   .catch((err) => {

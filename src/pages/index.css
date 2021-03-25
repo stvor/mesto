@@ -21,6 +21,8 @@
 @import url('../blocks/cards-grid/__delete-button/cards-grid__delete-button.css');
 @import url('../blocks/cards-grid/__heading-wrap/cards-grid__heading-wrap.css');
 @import url('../blocks/cards-grid/__heading/cards-grid__heading.css');
+@import url('../blocks/cards-grid/__like-wrap/cards-grid__like-wrap.css');
+@import url('../blocks/cards-grid/__likes-count/cards-grid__likes-count.css');
 @import url('../blocks/cards-grid/__like-button/cards-grid__like-button.css');
 @import url('../blocks/cards-grid/__like-button/_active/cards-grid__like-button_active.css');
 @import url('../blocks/footer/footer.css');
