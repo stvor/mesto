@@ -40,7 +40,7 @@ export class Api {
       });
   }
 
-  setUser() {
+  setUser(userData) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -51,8 +51,8 @@ export class Api {
         // todo: проверить
         // name: userData.name,
         // about: userData.about,
-        name: 'Marie Skłodowska Curie',
-        about: 'Physicist and Chemist'
+        name: userData.name,
+        about: userData.profession
       }),
     })
       .then(res => {

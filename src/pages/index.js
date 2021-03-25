@@ -25,36 +25,49 @@ api.getUser()
   .then(data => {
     console.log(data);
     userInfo.setUserInfo(data.name, data.about, data.avatar);
+  })
+  .catch((err) => {
+    console.log(err);
   });
 
 // api.addCard()
 // .then(data => {
 //   console.log(data);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
 
 // api.deleteCard()
 // .then(data => {
 //   console.log(data);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
 
 // api.likeCard()
 // .then(data => {
 //   console.log(data);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
 
 // api.unlikeCard()
 // .then(data => {
 //   console.log(data);
-// });
-
-// api.setUser()
-// .then(data => {
-//   console.log(data);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
 
 // api.setAvatar()
 // .then(data => {
 //   console.log(data);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
 
 // Попап редактирования профиля
@@ -101,13 +114,22 @@ const cardsList = new Section({
 api.getInitialCards()
   .then(data => {
     cardsList.renderItems(data);
+  })
+  .catch((err) => {
+    console.log(err);
   });
 
 // Создать экземпляр класса PopupWithForm для попапа профиля
 const profilePopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_profile-edit',
   handleFormSubmit: (userData) => {
-    userInfo.setUserInfo(userData.name, userData.profession);
+    api.setUser(userData)
+      .then(data => {
+        userInfo.setUserInfo(data.name, data.about, data.avatar);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     profilePopupWithForm.close();
   }
