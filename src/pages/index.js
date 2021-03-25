@@ -21,27 +21,28 @@ const options = {
 
 const api = new Api(options);
 
-// api.getUser()
-//   .then(data => {
-//     console.log(data);
-//   });
-
-api.getInitialCards()
+api.getUser()
   .then(data => {
-    // todo: выводить количество лайков на страницу
+    console.log(data);
 
-    const cardsList = new Section({
-      items: data,
-      renderer: (item) => {
-        const newCardElement = createCard(item);
-
-        cardsList.addItem(newCardElement);
-      }
-    }, '.cards-grid__list');
-
-    cardsList.renderItems();
-
+    userInfo.setUserInfo(data.name, data.about, data.avatar);
   });
+
+// api.getInitialCards()
+//   .then(data => {
+//     // todo: выводить количество лайков на страницу
+
+//     const cardsList = new Section({
+//       items: data,
+//       renderer: (item) => {
+//         const newCardElement = createCard(item);
+
+//         cardsList.addItem(newCardElement);
+//       }
+//     }, '.cards-grid__list');
+
+//     cardsList.renderItems();
+//   });
 
 // api.addCard()
 // .then(data => {
@@ -139,7 +140,8 @@ cardAddPopupWithForm.setEventListeners();
 // Создать класс UserInfo для отображения профиля
 const userInfo = new UserInfo({
   userNameSelector: '.profile__name',
-  professionSelector: '.profile__profession'
+  professionSelector: '.profile__profession',
+  avatarSelector: '.profile__avatar',
 });
 
 // Создать экземпляры класса FormValidator для каждой формы
