@@ -16,7 +16,6 @@ const options = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-21',
   headers: {
     authorization: '6320c87e-58cc-431b-b75b-473d8cbd6c68',
-    'Content-Type': 'application/json',
   },
 };
 
@@ -32,6 +31,10 @@ api.getInitialCards()
   console.log(data);
 });
 
+api.setUser()
+.then(data => {
+  console.log(data);
+});
 
 // Попап редактирования профиля
 function handleProfileEditPopupOpen() {
