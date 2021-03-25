@@ -110,8 +110,8 @@ export class Api {
       });
   }
 
-  likeCard() {
-    return fetch(`${this.url}/cards/likes/605ce357ed7b8600b5c34090`, {
+  likeCard(cardId) {
+    return fetch(`${this.url}/cards/likes/${cardId}`, {
       method: 'PUT',
       headers: {
         authorization: this.authorization,

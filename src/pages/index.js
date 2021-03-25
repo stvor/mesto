@@ -38,14 +38,6 @@ api.getUser()
 //   console.log(err);
 // });
 
-// api.likeCard()
-// .then(data => {
-//   console.log(data);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
 // api.unlikeCard()
 // .then(data => {
 //   console.log(data);
@@ -180,6 +172,16 @@ function createCard(item) {
     cardSelector: '.card-template',
     handleCardClick: (item) => {
       placePopupWithImage.open(item);
+    },
+    handleLikeClick: (cardId) => {
+      console.log('123');
+      api.likeCard(cardId)
+        .then(data => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
 
