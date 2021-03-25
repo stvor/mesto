@@ -30,14 +30,6 @@ api.getUser()
     console.log(err);
   });
 
-// api.addCard()
-// .then(data => {
-//   console.log(data);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
 // api.deleteCard()
 // .then(data => {
 //   console.log(data);
@@ -141,14 +133,22 @@ profilePopupWithForm.setEventListeners();
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
   handleFormSubmit: (cardData) => {
-    const newCard = {};
+    api.addCard(cardData)
+      .then(data => {
+        console.log(data);
 
-    newCard.name = cardData['place-name'];
-    newCard.link = cardData['place-link'];
+        const newCard = {};
 
-    const newCardElement = createCard(newCard);
+        newCard.name = cardData['place-name'];
+        newCard.link = cardData['place-link'];
 
-    cardsList.addItem(newCardElement);
+        const newCardElement = createCard(newCard);
+
+        cardsList.addItem(newCardElement);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     cardAddPopupWithForm.close();
   }
