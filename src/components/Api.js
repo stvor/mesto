@@ -65,20 +65,77 @@ export class Api {
       .catch(err => {
         Promise.reject(err);
       });
-  }
+    }
 
-  addCard() {
-    return fetch(`${this.url}/cards`, {
-      method: 'POST',
-      headers: {
-        authorization: this.authorization,
-        'Content-Type': 'application/json',
+    addCard() {
+      return fetch(`${this.url}/cards`, {
+        method: 'POST',
+        headers: {
+          authorization: this.authorization,
+          'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         // todo: отправлять карточку из формы
         name: 'Marie Skłodowska Curie',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
       }),
+    })
+    .then(res => {
+      if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+      })
+      .catch(err => {
+        Promise.reject(err);
+      });
+    }
+
+  deleteCard() {
+    return fetch(`${this.url}/cards/605ce53fed7b8600b5c34092`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this.authorization,
+      },
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+      })
+      .catch(err => {
+        Promise.reject(err);
+      });
+  }
+
+  likeCard() {
+    return fetch(`${this.url}/cards/likes/605ce357ed7b8600b5c34090`, {
+      method: 'PUT',
+      headers: {
+        authorization: this.authorization,
+      },
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+
+        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+      })
+      .catch(err => {
+        Promise.reject(err);
+      });
+  }
+
+  unlikeCard() {
+    return fetch(`${this.url}/cards/likes/605ce357ed7b8600b5c34090`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this.authorization,
+      },
     })
       .then(res => {
         if (res.ok) {

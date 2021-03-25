@@ -32,10 +32,25 @@ api.getInitialCards()
   console.log(data);
 });
 
-api.addCard()
-.then(data => {
-  console.log(data);
-});
+// api.addCard()
+// .then(data => {
+//   console.log(data);
+// });
+
+// api.deleteCard()
+// .then(data => {
+//   console.log(data);
+// });
+
+// api.likeCard()
+// .then(data => {
+//   console.log(data);
+// });
+
+// api.unlikeCard()
+// .then(data => {
+//   console.log(data);
+// });
 
 // api.setUser()
 // .then(data => {
