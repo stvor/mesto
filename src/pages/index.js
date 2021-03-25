@@ -178,6 +178,7 @@ function createCard(item) {
       api.likeCard(cardId)
         .then(data => {
           console.log(data);
+          card.updateLikes(data.likes.length);
         })
         .catch((err) => {
           console.log(err);

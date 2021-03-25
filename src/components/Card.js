@@ -78,4 +78,8 @@ export class Card {
 
     return this._element;
   }
+
+  updateLikes(likeNumbers) {
+    this._cardLikes.textContent = likeNumbers;
+  }
 }
