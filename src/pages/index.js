@@ -48,17 +48,6 @@ function createCard(item) {
     handleCardClick: (item) => {
       placePopupWithImage.open(item);
     },
-    handleLikeClick: (cardId) => {
-      console.log('123');
-      api.likeCard(cardId)
-        .then(data => {
-          console.log(data);
-          card.updateLikes(data.likes.length);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
   });
 
   const cardElement = card.generateCard();
