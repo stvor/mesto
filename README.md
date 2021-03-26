@@ -1,4 +1,4 @@
-# Проект 8: Место
+# Проект 9: Место
 
 Проект доступен по ссылке https://stvor.github.io/mesto/index.html.
 
