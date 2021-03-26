@@ -19,6 +19,70 @@ const options = {
   },
 };
 
+
+////////////////////////////////////////////////////////////
+// ОПИСАНИЕ ФУНКЦИЙ
+////////////////////////////////////////////////////////////
+
+// Попап редактирования профиля
+function handleProfileEditPopupOpen() {
+  const userData = userInfo.getUserInfo();
+
+  profilePopupWithForm.open(userData);
+
+  profileEditFormValidator.resetValidation();
+}
+
+// Попап добавления новой карточки
+function handleCardAddPopupOpen() {
+  cardAddPopupWithForm.open();
+
+  cardAddFormValidator.resetValidation();
+}
+
+// Создание карточки
+function createCard(item) {
+  const card = new Card({
+    cardData: item,
+    cardSelector: '.card-template',
+    handleCardClick: (item) => {
+      placePopupWithImage.open(item);
+    },
+    handleLikeClick: (cardId) => {
+      console.log('123');
+      api.likeCard(cardId)
+        .then(data => {
+          console.log(data);
+          card.updateLikes(data.likes.length);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
+
+  const cardElement = card.generateCard();
+
+  return cardElement;
+};
+
+
+////////////////////////////////////////////////////////////
+// ДОБАВЛЕНИЕ СЛУШАТЕЛЕЙ
+////////////////////////////////////////////////////////////
+
+// Попап добавления новой карточки
+cardAddButton.addEventListener('click', handleCardAddPopupOpen);
+
+// Попап редактирования профиля
+profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
+
+
+////////////////////////////////////////////////////////////
+// СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
+////////////////////////////////////////////////////////////
+
+// Создать класс Api для работы с сервером
 const api = new Api(options);
 
 api.getUser()
@@ -54,37 +118,14 @@ api.getUser()
 //   console.log(err);
 // });
 
-// Попап редактирования профиля
-function handleProfileEditPopupOpen() {
-  const userData = userInfo.getUserInfo();
-
-  profilePopupWithForm.open(userData);
-
-  profileEditFormValidator.resetValidation();
-}
-
-// Попап добавления новой карточки
-function handleCardAddPopupOpen() {
-  cardAddPopupWithForm.open();
-
-  cardAddFormValidator.resetValidation();
-}
-
-
-////////////////////////////////////////////////////////////
-// ДОБАВЛЕНИЕ СЛУШАТЕЛЕЙ
-////////////////////////////////////////////////////////////
-
-// Попап добавления новой карточки
-cardAddButton.addEventListener('click', handleCardAddPopupOpen);
-
-// Попап редактирования профиля
-profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
-
-
-////////////////////////////////////////////////////////////
-// СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
-////////////////////////////////////////////////////////////
+api.getInitialCards()
+  .then(data => {
+    console.log(data);
+    cardsList.renderItems(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Создать класс Section для отрисовки карточек
 const cardsList = new Section({
@@ -94,15 +135,6 @@ const cardsList = new Section({
     cardsList.addItem(newCardElement);
   }
 }, '.cards-grid__list');
-
-api.getInitialCards()
-  .then(data => {
-    console.log(data);
-    cardsList.renderItems(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // Создать экземпляр класса PopupWithForm для попапа профиля
 const profilePopupWithForm = new PopupWithForm({
@@ -165,29 +197,3 @@ profileEditFormValidator.enableValidation();
 
 const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
 placePopupWithImage.setEventListeners();
-
-function createCard(item) {
-  const card = new Card({
-    cardData: item,
-    cardSelector: '.card-template',
-    handleCardClick: (item) => {
-      placePopupWithImage.open(item);
-    },
-    handleLikeClick: (cardId) => {
-      console.log('123');
-      api.likeCard(cardId)
-        .then(data => {
-          console.log(data);
-          card.updateLikes(data.likes.length);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  });
-
-  const cardElement = card.generateCard();
-
-  return cardElement;
-};
-
