@@ -48,6 +48,12 @@ function createCard(item) {
     handleCardClick: (item) => {
       placePopupWithImage.open(item);
     },
+    handleDeleteCard: (evt) => {
+      evt.target.closest('.cards-grid__list-item').remove();
+    },
+    handleLikeCard: (evt) => {
+      evt.target.classList.toggle('cards-grid__like-button_active');
+    },
   });
 
   const cardElement = card.generateCard();
