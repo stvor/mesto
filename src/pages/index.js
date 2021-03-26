@@ -1,5 +1,5 @@
 import './index.css';
-import { Card, cardsData } from '../components/Card.js';
+import { Card } from '../components/Card.js';
 import { FormValidator, settings } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
