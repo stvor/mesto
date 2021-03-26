@@ -142,7 +142,8 @@ const profilePopupWithForm = new PopupWithForm({
   handleFormSubmit: (userData) => {
     api.setUser(userData)
       .then(data => {
-        userInfo.setUserInfo(data.name, data.about, data.avatar);
+        console.log(data);
+        userInfo.setUserInfo(data);
       })
       .catch((err) => {
         console.log(err);
@@ -206,7 +207,7 @@ placePopupWithImage.setEventListeners();
 api.first(api.getUser(), api.getInitialCards())
   .then(([userData, cardsData]) => {
     console.log(userData, cardsData);
-    userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
+    userInfo.setUserInfo(userData);
 
     cardsList.renderItems(cardsData);
   });

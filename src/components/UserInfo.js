@@ -12,9 +12,9 @@ export class UserInfo {
     return { userName, profession };
   }
 
-  setUserInfo(userName, profession, avatar) {
-    this._userName.textContent = userName;
-    this._profession.textContent = profession;
+  setUserInfo({ name, about, avatar }) {
+    this._userName.textContent = name;
+    this._profession.textContent = about;
     this._avatar.src = avatar;
   }
 }
