@@ -85,14 +85,14 @@ profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 // Создать класс Api для работы с сервером
 const api = new Api(options);
 
-api.getUser()
-  .then(data => {
-    console.log(data);
-    userInfo.setUserInfo(data.name, data.about, data.avatar);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// api.getUser()
+//   .then(data => {
+//     console.log(data);
+//     userInfo.setUserInfo(data.name, data.about, data.avatar);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // api.deleteCard()
 // .then(data => {
@@ -118,14 +118,14 @@ api.getUser()
 //   console.log(err);
 // });
 
-api.getInitialCards()
-  .then(data => {
-    console.log(data);
-    cardsList.renderItems(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// api.getInitialCards()
+//   .then(data => {
+//     console.log(data);
+//     cardsList.renderItems(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // Создать класс Section для отрисовки карточек
 const cardsList = new Section({
@@ -197,3 +197,16 @@ profileEditFormValidator.enableValidation();
 
 const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
 placePopupWithImage.setEventListeners();
+
+
+////////////////////////////////////////////////////////////
+// ВЫЗОВЫ
+////////////////////////////////////////////////////////////
+
+api.first(api.getUser(), api.getInitialCards())
+  .then(([userData, cardsData]) => {
+    console.log(userData, cardsData);
+    userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
+
+    cardsList.renderItems(cardsData);
+  });

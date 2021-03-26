@@ -170,4 +170,8 @@ export class Api {
         Promise.reject(err);
       });
   }
+
+  first(...args) {
+    return Promise.all([...args]);
+  }
 }
