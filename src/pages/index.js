@@ -82,14 +82,7 @@ function createCard(item) {
       if (!isLikedByMe) {
         api.sendLike(item._id)
           .then((data) => {
-            console.log('лайк отправлен на сервер');
-            console.log(data);
-            // обновить состояние сердечка
-            // card.setLikeStatus(data, userInfo.getUserId());
             card.addLike(data);
-
-            // обновить счетчик лайков
-            // card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
@@ -97,22 +90,12 @@ function createCard(item) {
       } else {
         api.sendUnlike(item._id)
           .then((data) => {
-            console.log('анлайк отправлен на сервер');
-            console.log(data);
-            // обновить состояние сердечка
-            // card.setLikeStatus(data, userInfo.getUserId());
             card.removeLike(data);
-
-            // обновить счетчик лайков
-            // card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
           });
       }
-
-
-    //   evt.target.classList.toggle('cards-grid__like-button_active');
     },
   });
 
@@ -206,13 +189,7 @@ const cardAddPopupWithForm = new PopupWithForm({
 
     api.addCard(cardData)
       .then(data => {
-        const newCard = {};
-
-        newCard.name = data.name;
-        newCard.link = data.link;
-        newCard.likesNumber = data.likes.length;
-
-        const newCardElement = createCard(newCard);
+        const newCardElement = createCard(data);
 
         cardsList.addItem(newCardElement);
       })

@@ -5,6 +5,9 @@ export class Card {
     this._id = cardData._id;
     this._link = cardData.link;
     this._name = cardData.name;
+
+    console.log(cardData);
+
     this._ownerId = cardData.owner._id;
     this._likesNumber = cardData.likes.length;
     this._handleCardClick = handleCardClick;
@@ -38,7 +41,6 @@ export class Card {
   }
 
   setLikeStatus(cardData, userId) {
-    console.log('обновили лайк на странице');
     if (!this._checkMyLike(cardData, userId)) {
       this._likeButton.classList.remove('cards-grid__like-button_active');
     } else {
@@ -47,23 +49,14 @@ export class Card {
   }
 
   addLike(data) {
-    console.log('addLike done');
-
     this._likeButton.classList.add('cards-grid__like-button_active');
     this._isLikedByMe = !this._isLikedByMe;
-
-    console.log(data.likes.length);
-
     this._cardLikes.textContent = data.likes.length;
   }
 
   removeLike(data) {
-    console.log('removeLike done');
     this._likeButton.classList.remove('cards-grid__like-button_active');
     this._isLikedByMe = !this._isLikedByMe;
-
-    console.log(data.likes.length);
-
     this._cardLikes.textContent = data.likes.length;
   }
 
