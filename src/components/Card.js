@@ -48,7 +48,6 @@ export class Card {
     this._cardLikes.textContent = this._likesNumber;
 
     if (this._ownerId === userId) {
-      console.log(this._ownerId);
       this._deleteButton.classList.add('cards-grid__delete-button_visible');
     }
 

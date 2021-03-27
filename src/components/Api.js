@@ -91,8 +91,8 @@ export class Api {
         });
   }
 
-  deleteCard() {
-    return fetch(`${this.url}/cards/605d0a67ed7b8600b5c3418f`, {
+  deleteCard(cardId) {
+    return fetch(`${this.url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
         authorization: this.authorization,

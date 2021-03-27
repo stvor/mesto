@@ -54,11 +54,12 @@ function createCard(item) {
       const deleteCardPopup = new PopupWithSubmit({
         popupSelector: '.popup_type_delete-submit',
         handleFormSubmit: () => {
-          deleteCardPopup.close();
+          api.deleteCard(item._id)
+            .then(() => {
+              deleteCardPopup.close();
 
-          evt.target.closest('.cards-grid__list-item').remove();
-
-          // не забыть удалить карточку на сервере
+              evt.target.closest('.cards-grid__list-item').remove();
+            });
         }
       });
 
