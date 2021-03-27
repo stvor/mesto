@@ -27,6 +27,7 @@ export class PopupWithForm extends Popup {
   }
 
   open(data) {
+    console.log(data);
     if (data) {
       this._nameInput = this._popup.querySelector('.form__input_type_name');
       this._professionInput = this._popup.querySelector('.form__input_type_profession');

@@ -10,6 +10,8 @@ import { Api } from '../components/Api.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditFormElement = document.querySelector('.form_type_profile-edit');
+const avatarEditButton = document.querySelector('.profile__avatar');
+const avatarEditFormElement = document.querySelector('.form_type_avatar-edit');
 const cardAddButton = document.querySelector('.profile__add-button');
 const cardAddFormElement = document.querySelector('.form_type_card-add');
 
@@ -32,6 +34,12 @@ function handleProfileEditPopupOpen() {
   profilePopupWithForm.open(userData);
 
   profileEditFormValidator.resetValidation();
+}
+
+function handleAvatarEditPopupOpen() {
+  avatarPopupWithForm.open();
+
+  avatarEditFormValidator.resetValidation();
 }
 
 // Попап добавления новой карточки
@@ -122,6 +130,9 @@ cardAddButton.addEventListener('click', handleCardAddPopupOpen);
 // Попап редактирования профиля
 profileEditButton.addEventListener('click', handleProfileEditPopupOpen);
 
+// Попап редактирования аватара
+avatarEditButton.addEventListener('click', handleAvatarEditPopupOpen);
+
 
 ////////////////////////////////////////////////////////////
 // СОЗДАНИЕ ЭКЗЕМПЛЯРОВ КЛАССОВ
@@ -200,6 +211,27 @@ const profilePopupWithForm = new PopupWithForm({
 
 profilePopupWithForm.setEventListeners();
 
+// Создать экземпляр класса PopupWithForm для аватара
+const avatarPopupWithForm = new PopupWithForm({
+  popupSelector: '.popup_type_avatar-edit',
+  handleFormSubmit: (avatarData) => {
+    console.log(avatarData['avatar-link']);
+
+    api.setAvatar(avatarData['avatar-link'])
+      .then(data => {
+        console.log(data);
+        userInfo.setUserInfo(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      avatarPopupWithForm.close();
+  }
+});
+
+avatarPopupWithForm.setEventListeners();
+
 // Создать экземпляр класса PopupWithForm для попапа добавления новой карточки
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
@@ -239,6 +271,9 @@ cardAddFormValidator.enableValidation();
 
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
+
+const avatarEditFormValidator = new FormValidator(settings, avatarEditFormElement);
+avatarEditFormValidator.enableValidation();
 
 const placePicturePopup = new PicturePopup('.popup_type_image-popup');
 placePicturePopup.setEventListeners();

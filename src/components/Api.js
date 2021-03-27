@@ -148,7 +148,7 @@ export class Api {
       });
   }
 
-  setAvatar() {
+  setAvatar(avatarLink) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -156,7 +156,7 @@ export class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: "https://img4.goodfon.ru/wallpaper/nbig/c/49/my-little-pony-druzhba-eto-chudo-raznotsvetnyi-orange-fiolet.jpg",
+        avatar: avatarLink,
       }),
     })
       .then(res => {
