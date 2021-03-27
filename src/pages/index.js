@@ -3,7 +3,7 @@ import { Card } from '../components/Card.js';
 import { FormValidator, settings } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PicturePopup } from '../components/PicturePopup.js';
 import { PopupWithSubmit } from '../components/PopupWithSubmit.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
@@ -47,7 +47,7 @@ function createCard(item) {
     cardData: item,
     cardSelector: '.card-template',
     handleCardClick: (item) => {
-      placePopupWithImage.open(item);
+      placePicturePopup.open(item);
     },
     handleDeleteCard: (evt) => {
 
@@ -211,8 +211,8 @@ cardAddFormValidator.enableValidation();
 const profileEditFormValidator = new FormValidator(settings, profileEditFormElement);
 profileEditFormValidator.enableValidation();
 
-const placePopupWithImage = new PopupWithImage('.popup_type_image-popup');
-placePopupWithImage.setEventListeners();
+const placePicturePopup = new PicturePopup('.popup_type_image-popup');
+placePicturePopup.setEventListeners();
 
 
 ////////////////////////////////////////////////////////////
