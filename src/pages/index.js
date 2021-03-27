@@ -4,6 +4,7 @@ import { FormValidator, settings } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithSubmit } from '../components/PopupWithSubmit.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
@@ -49,7 +50,19 @@ function createCard(item) {
       placePopupWithImage.open(item);
     },
     handleDeleteCard: (evt) => {
-      evt.target.closest('.cards-grid__list-item').remove();
+
+      const deleteCardPopup = new PopupWithSubmit({
+        popupSelector: '.popup_type_delete-submit',
+        handleFormSubmit: () => {
+          deleteCardPopup.close();
+
+          evt.target.closest('.cards-grid__list-item').remove();
+        }
+      });
+
+      deleteCardPopup.setEventListeners();
+
+      deleteCardPopup.open();
     },
     handleLikeCard: (evt) => {
       evt.target.classList.toggle('cards-grid__like-button_active');

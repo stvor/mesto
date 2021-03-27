@@ -1,4 +1,5 @@
 .cards-grid__like-wrap {
   display: flex;
   flex-direction: column;
+  padding: 22px 20px;
 }
