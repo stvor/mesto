@@ -75,18 +75,25 @@ function createCard(item) {
 
       if (!isLikedByMe) {
         api.sendLike(item._id)
-          .then(() => {
+          .then((data) => {
+            console.log(data);
             // обновить состояние сердечка
+            card.setLikeStatus(data, userInfo.getUserId());
+
             // обновить счетчик лайков
+            card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
           });
       } else {
         api.sendUnlike(item._id)
-          .then(() => {
+          .then((data) => {
             // обновить состояние сердечка
+            card.setLikeStatus(data, userInfo.getUserId());
+
             // обновить счетчик лайков
+            card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
