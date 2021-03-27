@@ -70,28 +70,31 @@ function createCard(item) {
 
       deleteCardPopup.open();
     },
-    handleLikeCard: (evt) => {
+    handleLikeCard: (isLikedByMe) => {
+      console.log(isLikedByMe);
 
-      // if (!isLikedByMe) {
+      if (!isLikedByMe) {
         api.sendLike(item._id)
           .then(() => {
-            evt.target.classList.toggle('cards-grid__like-button_active');
+            // обновить состояние сердечка
             // обновить счетчик лайков
           })
           .catch((err) => {
             console.log(err);
           });
-      // } else {
-      //   api.sendUnlike(item._id)
-      //     .then(() => {
-      //       evt.target.classList.toggle('cards-grid__like-button_active');
-      //       // обновить счетчик лайков
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-      // }
-      evt.target.classList.toggle('cards-grid__like-button_active');
+      } else {
+        api.sendUnlike(item._id)
+          .then(() => {
+            // обновить состояние сердечка
+            // обновить счетчик лайков
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+
+    //   evt.target.classList.toggle('cards-grid__like-button_active');
     },
   });
 
