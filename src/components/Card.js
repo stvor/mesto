@@ -39,9 +39,9 @@ export class Card {
 
   setLikeStatus(cardData, userId) {
     if (!this._checkMyLike(cardData, userId)) {
-      this._likeButton.classList.add('cards-grid__like-button_active');
-    } else {
       this._likeButton.classList.remove('cards-grid__like-button_active');
+    } else {
+      this._likeButton.classList.add('cards-grid__like-button_active');
     }
   }
 
