@@ -4,7 +4,7 @@ export class Card {
     this._id = cardData._id;
     this._link = cardData.link;
     this._name = cardData.name;
-    this._likesNumber = cardData.likesNumber;
+    this._likesNumber = cardData.likes.length;
     this._cardData = cardData;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
