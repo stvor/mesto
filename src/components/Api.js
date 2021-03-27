@@ -110,7 +110,7 @@ export class Api {
       });
   }
 
-  likeCard(cardId) {
+  sendLike(cardId) {
     return fetch(`${this.url}/cards/likes/${cardId}`, {
       method: 'PUT',
       headers: {
@@ -129,8 +129,8 @@ export class Api {
       });
   }
 
-  unlikeCard() {
-    return fetch(`${this.url}/cards/likes/605ce357ed7b8600b5c34090`, {
+  sendUnlike(cardId) {
+    return fetch(`${this.url}/cards/likes/${cardId}`, {
       method: 'DELETE',
       headers: {
         authorization: this.authorization,
