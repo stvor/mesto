@@ -9,6 +9,7 @@
   position: absolute;
   top: 18px;
   right: 15px;
+  display: none;
 }
 
 .cards-grid__delete-button:hover {

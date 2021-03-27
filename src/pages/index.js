@@ -69,7 +69,7 @@ function createCard(item) {
     },
   });
 
-  const cardElement = card.generateCard();
+  const cardElement = card.generateCard("b1857f979b9cf3e2e4176bb1");
 
   return cardElement;
 };
