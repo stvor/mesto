@@ -59,7 +59,10 @@ function createCard(item) {
               deleteCardPopup.close();
 
               evt.target.closest('.cards-grid__list-item').remove();
-            });
+            })
+            .catch((err) => {
+              console.log(err);
+            });;
         }
       });
 
@@ -220,4 +223,7 @@ api.first(api.getUser(), api.getInitialCards())
     userInfo.setUserInfo(userData);
 
     cardsList.renderItems(cardsData);
-  });
+  })
+  .catch((err) => {
+    console.log(err);
+  });;
