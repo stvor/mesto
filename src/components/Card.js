@@ -38,11 +38,24 @@ export class Card {
   }
 
   setLikeStatus(cardData, userId) {
+    console.log('обновили лайк на странице');
     if (!this._checkMyLike(cardData, userId)) {
       this._likeButton.classList.remove('cards-grid__like-button_active');
     } else {
       this._likeButton.classList.add('cards-grid__like-button_active');
     }
+  }
+
+  addLike() {
+    console.log('addLike done');
+    this._likeButton.classList.add('cards-grid__like-button_active');
+    this._isLikedByMe = !this._isLikedByMe;
+  }
+
+  removeLike() {
+    console.log('removeLike done');
+    this._likeButton.classList.remove('cards-grid__like-button_active');
+    this._isLikedByMe = !this._isLikedByMe;
   }
 
   generateCard(userId) {

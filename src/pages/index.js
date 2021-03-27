@@ -82,11 +82,14 @@ function createCard(item) {
       if (!isLikedByMe) {
         api.sendLike(item._id)
           .then((data) => {
+            console.log('лайк отправлен на сервер');
+            console.log(data);
             // обновить состояние сердечка
-            card.setLikeStatus(data, userInfo.getUserId());
+            // card.setLikeStatus(data, userInfo.getUserId());
+            card.addLike();
 
             // обновить счетчик лайков
-            card.setLikeNumber(data);
+            // card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
@@ -94,11 +97,14 @@ function createCard(item) {
       } else {
         api.sendUnlike(item._id)
           .then((data) => {
+            console.log('анлайк отправлен на сервер');
+            console.log(data);
             // обновить состояние сердечка
-            card.setLikeStatus(data, userInfo.getUserId());
+            // card.setLikeStatus(data, userInfo.getUserId());
+            card.removeLike();
 
             // обновить счетчик лайков
-            card.setLikeNumber(data);
+            // card.setLikeNumber(data);
           })
           .catch((err) => {
             console.log(err);
