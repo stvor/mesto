@@ -4,7 +4,7 @@ export class Card {
     this._id = cardData._id;
     this._link = cardData.link;
     this._name = cardData.name;
-    this._likes = cardData.likes.length;
+    this._likesNumber = cardData.likesNumber;
     this._cardData = cardData;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
@@ -43,7 +43,7 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardHeading.textContent = this._name;
-    this._cardLikes.textContent = this._likes;
+    this._cardLikes.textContent = this._likesNumber;
 
     this._setEventListeners();
 
