@@ -34,4 +34,14 @@ export class Popup {
 
     this._closeButton.addEventListener('click', () => this.close());
   }
+
+  renderLoading(isLoading) {
+    this._submitButton = this._popup.querySelector('.form__submit');
+
+    if (isLoading) {
+      this._submitButton.textContent = 'Сохранение...';
+    } else {
+      this._submitButton.textContent = 'Сохранить';
+    }
+  }
 }

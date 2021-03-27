@@ -196,6 +196,8 @@ const cardsList = new Section({
 const profilePopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_profile-edit',
   handleFormSubmit: (userData) => {
+    profilePopupWithForm.renderLoading(true);
+
     api.setUser(userData)
       .then(data => {
         console.log(data);
@@ -203,6 +205,9 @@ const profilePopupWithForm = new PopupWithForm({
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        profilePopupWithForm.renderLoading(false);
       });
 
     profilePopupWithForm.close();
@@ -215,7 +220,7 @@ profilePopupWithForm.setEventListeners();
 const avatarPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_avatar-edit',
   handleFormSubmit: (avatarData) => {
-    console.log(avatarData['avatar-link']);
+    avatarPopupWithForm.renderLoading(true);
 
     api.setAvatar(avatarData['avatar-link'])
       .then(data => {
@@ -224,6 +229,9 @@ const avatarPopupWithForm = new PopupWithForm({
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        avatarPopupWithForm.renderLoading(false);
       });
 
       avatarPopupWithForm.close();
@@ -236,6 +244,8 @@ avatarPopupWithForm.setEventListeners();
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
   handleFormSubmit: (cardData) => {
+    cardAddPopupWithForm.renderLoading(true);
+
     api.addCard(cardData)
       .then(data => {
         const newCard = {};
@@ -250,6 +260,9 @@ const cardAddPopupWithForm = new PopupWithForm({
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        cardAddPopupWithForm.renderLoading(false);
       });
 
     cardAddPopupWithForm.close();
