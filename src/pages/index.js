@@ -89,6 +89,7 @@ function createCard(item) {
       } else {
         api.sendUnlike(item._id)
           .then((data) => {
+            console.log(data);
             // обновить состояние сердечка
             card.setLikeStatus(data, userInfo.getUserId());
 
