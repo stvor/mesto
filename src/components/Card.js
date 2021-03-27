@@ -46,16 +46,25 @@ export class Card {
     }
   }
 
-  addLike() {
+  addLike(data) {
     console.log('addLike done');
+
     this._likeButton.classList.add('cards-grid__like-button_active');
     this._isLikedByMe = !this._isLikedByMe;
+
+    console.log(data.likes.length);
+
+    this._cardLikes.textContent = data.likes.length;
   }
 
-  removeLike() {
+  removeLike(data) {
     console.log('removeLike done');
     this._likeButton.classList.remove('cards-grid__like-button_active');
     this._isLikedByMe = !this._isLikedByMe;
+
+    console.log(data.likes.length);
+
+    this._cardLikes.textContent = data.likes.length;
   }
 
   generateCard(userId) {

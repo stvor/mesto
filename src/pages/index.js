@@ -86,7 +86,7 @@ function createCard(item) {
             console.log(data);
             // обновить состояние сердечка
             // card.setLikeStatus(data, userInfo.getUserId());
-            card.addLike();
+            card.addLike(data);
 
             // обновить счетчик лайков
             // card.setLikeNumber(data);
@@ -101,7 +101,7 @@ function createCard(item) {
             console.log(data);
             // обновить состояние сердечка
             // card.setLikeStatus(data, userInfo.getUserId());
-            card.removeLike();
+            card.removeLike(data);
 
             // обновить счетчик лайков
             // card.setLikeNumber(data);
