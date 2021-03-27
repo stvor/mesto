@@ -12,9 +12,14 @@ export class UserInfo {
     return { userName, profession };
   }
 
-  setUserInfo({ name, about, avatar }) {
+  setUserInfo({ name, about, avatar, _id }) {
     this._userName.textContent = name;
     this._profession.textContent = about;
     this._avatar.src = avatar;
+    this._id = _id;
+  }
+
+  getUserId() {
+    return this._id;
   }
 }

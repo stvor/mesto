@@ -57,6 +57,8 @@ function createCard(item) {
           deleteCardPopup.close();
 
           evt.target.closest('.cards-grid__list-item').remove();
+
+          // не забыть удалить карточку на сервере
         }
       });
 
@@ -69,7 +71,7 @@ function createCard(item) {
     },
   });
 
-  const cardElement = card.generateCard("b1857f979b9cf3e2e4176bb1");
+  const cardElement = card.generateCard(userInfo.getUserId());
 
   return cardElement;
 };
