@@ -71,6 +71,26 @@ function createCard(item) {
       deleteCardPopup.open();
     },
     handleLikeCard: (evt) => {
+
+      // if (!isLikedByMe) {
+        api.sendLike(item._id)
+          .then(() => {
+            evt.target.classList.toggle('cards-grid__like-button_active');
+            // обновить счетчик лайков
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      // } else {
+      //   api.sendUnlike(item._id)
+      //     .then(() => {
+      //       evt.target.classList.toggle('cards-grid__like-button_active');
+      //       // обновить счетчик лайков
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // }
       evt.target.classList.toggle('cards-grid__like-button_active');
     },
   });

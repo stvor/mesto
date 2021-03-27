@@ -22,8 +22,8 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.cards-grid__delete-button').addEventListener('click', this._handleDeleteCard);
-    this._element.querySelector('.cards-grid__like-button').addEventListener('click', this._handleLikeCard);
+    this._deleteButton.addEventListener('click', this._handleDeleteCard);
+    this._likeButton.addEventListener('click', this._handleLikeCard);
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._cardData));
   }
 
@@ -35,12 +35,27 @@ export class Card {
   //   evt.target.classList.toggle('cards-grid__like-button_active');
   // }
 
+  _isLikedByMe(userId) {
+    return this._cardData.likes.some((liker) => {
+      return liker._id === userId;
+    });
+  }
+
+  _updateLikeStatus(userId) {
+    if (this._isLikedByMe(userId)) {
+      this._likeButton.classList.add('cards-grid__like-button_active');
+    } else {
+      this._likeButton.classList.remove('cards-grid__like-button_active');
+    }
+  }
+
   generateCard(userId) {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.cards-grid__image');
     this._cardHeading = this._element.querySelector('.cards-grid__heading');
     this._cardLikes = this._element.querySelector('.cards-grid__likes-count');
     this._deleteButton = this._element.querySelector('.cards-grid__delete-button');
+    this._likeButton = this._element.querySelector('.cards-grid__like-button');
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
@@ -51,6 +66,7 @@ export class Card {
       this._deleteButton.classList.add('cards-grid__delete-button_visible');
     }
 
+    this._updateLikeStatus(userId);
     this._setEventListeners();
 
     return this._element;
