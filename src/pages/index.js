@@ -170,18 +170,13 @@ profilePopupWithForm.setEventListeners();
 const cardAddPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_card-add',
   handleFormSubmit: (cardData) => {
-    console.log('1', cardData);
     api.addCard(cardData)
       .then(data => {
-        console.log('2', data);
-
         const newCard = {};
 
         newCard.name = data.name;
         newCard.link = data.link;
         newCard.likesNumber = data.likes.length;
-
-        console.log('3', newCard);
 
         const newCardElement = createCard(newCard);
 
