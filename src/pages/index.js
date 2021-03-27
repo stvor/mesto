@@ -79,12 +79,9 @@ function createCard(item) {
       deleteCardPopup.open();
     },
     handleLikeCard: (isLikedByMe) => {
-      console.log(isLikedByMe);
-
       if (!isLikedByMe) {
         api.sendLike(item._id)
           .then((data) => {
-            console.log(data);
             // обновить состояние сердечка
             card.setLikeStatus(data, userInfo.getUserId());
 
@@ -97,7 +94,6 @@ function createCard(item) {
       } else {
         api.sendUnlike(item._id)
           .then((data) => {
-            console.log(data);
             // обновить состояние сердечка
             card.setLikeStatus(data, userInfo.getUserId());
 
@@ -141,48 +137,6 @@ avatarEditButton.addEventListener('click', handleAvatarEditPopupOpen);
 // Создать класс Api для работы с сервером
 const api = new Api(options);
 
-// api.getUser()
-//   .then(data => {
-//     console.log(data);
-//     userInfo.setUserInfo(data.name, data.about, data.avatar);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-// api.deleteCard()
-// .then(data => {
-//   console.log(data);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
-// api.unlikeCard()
-// .then(data => {
-//   console.log(data);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
-// api.setAvatar()
-// .then(data => {
-//   console.log(data);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
-
-// api.getInitialCards()
-//   .then(data => {
-//     console.log(data);
-//     cardsList.renderItems(data);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
 // Создать класс Section для отрисовки карточек
 const cardsList = new Section({
   renderer: (item) => {
@@ -200,7 +154,6 @@ const profilePopupWithForm = new PopupWithForm({
 
     api.setUser(userData)
       .then(data => {
-        console.log(data);
         userInfo.setUserInfo(data);
       })
       .catch((err) => {
@@ -224,7 +177,6 @@ const avatarPopupWithForm = new PopupWithForm({
 
     api.setAvatar(avatarData['avatar-link'])
       .then(data => {
-        console.log(data);
         userInfo.setUserInfo(data);
       })
       .catch((err) => {
@@ -298,7 +250,6 @@ placePicturePopup.setEventListeners();
 
 api.first(api.getUser(), api.getInitialCards())
   .then(([userData, cardsData]) => {
-    console.log(userData, cardsData);
     userInfo.setUserInfo(userData);
 
     cardsList.renderItems(cardsData);
