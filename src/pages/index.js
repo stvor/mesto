@@ -58,24 +58,11 @@ function createCard(item) {
     handleCardClick: (item) => {
       placePicturePopup.open(item);
     },
-    handleDeleteCard: (evt) => {
+    handleDeleteCard: () => {
 
-      const deleteCardPopup = new PopupWithSubmit({
-        popupSelector: '.popup_type_delete-submit',
-        handleFormSubmit: () => {
-          api.deleteCard(item._id)
-            .then(() => {
-              deleteCardPopup.close();
-
-              evt.target.closest('.cards-grid__list-item').remove();
-            })
-            .catch((err) => {
-              console.log(err);
-            });;
-        }
+      deleteCardPopup.setSubmitAction(() => {
+        console.log(item);
       });
-
-      deleteCardPopup.setEventListeners();
 
       deleteCardPopup.open();
     },
@@ -204,6 +191,28 @@ const cardAddPopupWithForm = new PopupWithForm({
 });
 
 cardAddPopupWithForm.setEventListeners();
+
+// Создать экземпляр класса PopupWithSubmit для подтверждения удаления карточки
+const deleteCardPopup = new PopupWithSubmit({
+  popupSelector: '.popup_type_delete-submit',
+  // handleFormSubmit: () => {
+  //   console.log('сабмит формы');
+
+
+    // нужно передать айдишник карточки для удаления
+    // api.deleteCard()
+    //   .then(() => {
+    //     evt.target.closest('.cards-grid__list-item').remove();
+
+    //     deleteCardPopup.close();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });;
+  // }
+});
+
+deleteCardPopup.setEventListeners();
 
 // Создать класс UserInfo для отображения профиля
 const userInfo = new UserInfo({
