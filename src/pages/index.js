@@ -58,14 +58,24 @@ function createCard(item) {
     handleCardClick: (item) => {
       placePicturePopup.open(item);
     },
-    handleDeleteCard: () => {
 
+
+    handleDeleteCard: (param) => {
       deleteCardPopup.setSubmitAction(() => {
-        console.log(item);
+        api.deleteCard(item._id)
+        .then(() => {
+          param.removeCard();
+          deleteCardPopup.close();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       });
 
       deleteCardPopup.open();
     },
+
+
     handleLikeCard: (isLikedByMe) => {
       if (!isLikedByMe) {
         api.sendLike(item._id)
@@ -195,21 +205,6 @@ cardAddPopupWithForm.setEventListeners();
 // Создать экземпляр класса PopupWithSubmit для подтверждения удаления карточки
 const deleteCardPopup = new PopupWithSubmit({
   popupSelector: '.popup_type_delete-submit',
-  // handleFormSubmit: () => {
-  //   console.log('сабмит формы');
-
-
-    // нужно передать айдишник карточки для удаления
-    // api.deleteCard()
-    //   .then(() => {
-    //     evt.target.closest('.cards-grid__list-item').remove();
-
-    //     deleteCardPopup.close();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });;
-  // }
 });
 
 deleteCardPopup.setEventListeners();

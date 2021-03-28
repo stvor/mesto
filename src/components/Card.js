@@ -10,7 +10,18 @@ export class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeCard = handleLikeCard;
+    this.removeCard = this.removeCard.bind(this);
   }
+
+  _setEventListeners() {
+    this._deleteButton.addEventListener('click', () => this._handleDeleteCard(this));
+    this._likeButton.addEventListener('click', () => this._handleLikeCard(this._isLikedByMe));
+    this._cardImage.addEventListener('click', () => this._handleCardClick(this._cardData));
+  }
+
+  removeCard() {
+    this._element.remove();
+  };
 
   _getTemplate() {
     const cardElement = document
@@ -19,12 +30,6 @@ export class Card {
       .cloneNode(true);
 
     return cardElement;
-  }
-
-  _setEventListeners() {
-    this._deleteButton.addEventListener('click', this._handleDeleteCard);
-    this._likeButton.addEventListener('click', () => this._handleLikeCard(this._isLikedByMe));
-    this._cardImage.addEventListener('click', () => this._handleCardClick(this._cardData));
   }
 
   _checkMyLike(cardData, userId) {
