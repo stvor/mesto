@@ -4,19 +4,21 @@ export class Api {
     this.authorization = config.headers.authorization;
   }
 
+  _processingResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(new Error(`Ошибка, код ${res.status}`))
+  }
+
   getUser() {
     return fetch(`${this.url}/users/me`, {
       headers: {
         authorization: this.authorization,
       },
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+      .then(res => this._processingResponse(res));
   }
 
   getInitialCards() {
@@ -25,13 +27,7 @@ export class Api {
         authorization: this.authorization,
       },
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+    .then(res => this._processingResponse(res));
   }
 
   setUser(userData) {
@@ -49,14 +45,8 @@ export class Api {
         about: userData.profession
       }),
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
-    }
+    .then(res => this._processingResponse(res));
+  }
 
   addCard(cardData) {
     return fetch(`${this.url}/cards`, {
@@ -70,13 +60,7 @@ export class Api {
         link: cardData['place-link'],
       }),
     })
-      .then(res => {
-        if (res.ok) {
-            return res.json();
-          }
-
-          return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-        });
+    .then(res => this._processingResponse(res));
   }
 
   deleteCard(cardId) {
@@ -86,13 +70,7 @@ export class Api {
         authorization: this.authorization,
       },
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+    .then(res => this._processingResponse(res));
   }
 
   sendLike(cardId) {
@@ -102,13 +80,7 @@ export class Api {
         authorization: this.authorization,
       },
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+    .then(res => this._processingResponse(res));
   }
 
   sendUnlike(cardId) {
@@ -118,13 +90,7 @@ export class Api {
         authorization: this.authorization,
       },
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+    .then(res => this._processingResponse(res));
   }
 
   setAvatar(avatarLink) {
@@ -138,13 +104,7 @@ export class Api {
         avatar: avatarLink,
       }),
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      });
+    .then(res => this._processingResponse(res));
   }
 
   first(...args) {
