@@ -145,6 +145,7 @@ const profilePopupWithForm = new PopupWithForm({
     api.setUser(userData)
       .then(data => {
         userInfo.setUserInfo(data);
+        profilePopupWithForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -152,8 +153,6 @@ const profilePopupWithForm = new PopupWithForm({
       .finally(() => {
         profilePopupWithForm.renderLoading(false);
       });
-
-    profilePopupWithForm.close();
   }
 });
 
@@ -168,6 +167,7 @@ const avatarPopupWithForm = new PopupWithForm({
     api.setAvatar(avatarData['avatar-link'])
       .then(data => {
         userInfo.setUserInfo(data);
+        avatarPopupWithForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -175,8 +175,6 @@ const avatarPopupWithForm = new PopupWithForm({
       .finally(() => {
         avatarPopupWithForm.renderLoading(false);
       });
-
-      avatarPopupWithForm.close();
   }
 });
 
@@ -193,6 +191,8 @@ const cardAddPopupWithForm = new PopupWithForm({
         const newCardElement = createCard(data);
 
         cardsList.addItem(newCardElement);
+
+        cardAddPopupWithForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -200,8 +200,6 @@ const cardAddPopupWithForm = new PopupWithForm({
       .finally(() => {
         cardAddPopupWithForm.renderLoading(false);
       });
-
-    cardAddPopupWithForm.close();
   }
 });
 
