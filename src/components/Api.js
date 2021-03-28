@@ -16,9 +16,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
@@ -34,9 +31,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
@@ -61,9 +55,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
     }
 
@@ -85,9 +76,6 @@ export class Api {
           }
 
           return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-        })
-        .catch(err => {
-          Promise.reject(err);
         });
   }
 
@@ -104,9 +92,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
@@ -123,9 +108,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
@@ -142,9 +124,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
@@ -165,9 +144,6 @@ export class Api {
         }
 
         return Promise.reject(new Error(`Ошибка, код ${res.status}`))
-      })
-      .catch(err => {
-        Promise.reject(err);
       });
   }
 
