@@ -5,9 +5,6 @@ export class Card {
     this._id = cardData._id;
     this._link = cardData.link;
     this._name = cardData.name;
-
-    console.log(cardData);
-
     this._ownerId = cardData.owner._id;
     this._likesNumber = cardData.likes.length;
     this._handleCardClick = handleCardClick;

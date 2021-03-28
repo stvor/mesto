@@ -6,10 +6,10 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    const userName = this._userName.textContent;
+    const name = this._userName.textContent;
     const profession = this._profession.textContent;
 
-    return { userName, profession };
+    return { name, profession };
   }
 
   setUserInfo({ name, about, avatar, _id }) {

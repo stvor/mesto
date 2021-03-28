@@ -15,6 +15,11 @@ export class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  _setInputValues(formValues) {
+    console.log(formValues);
+      this._inputList.forEach(input => input.value = formValues[input.name]);
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
@@ -36,14 +41,10 @@ export class PopupWithForm extends Popup {
 
   open(data) {
     if (data) {
-      this._nameInput = this._popup.querySelector('.form__input_type_name');
-      this._professionInput = this._popup.querySelector('.form__input_type_profession');
-
-      this._nameInput.value = data.userName;
-      this._professionInput.value = data.profession;
+      this._setInputValues(data);
     }
 
-      super.open();
+    super.open();
   }
 
   close() {
