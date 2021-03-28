@@ -51,7 +51,8 @@ function handleCardAddPopupOpen() {
 }
 
 // Создание карточки
-function createCard(item) {
+// function createCard(item) {
+const createCard = (item) => {
   const card = new Card({
     cardData: item,
     cardSelector: '.card-template',

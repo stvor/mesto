@@ -21,6 +21,8 @@ export class Card {
 
   removeCard() {
     this._element.remove();
+
+    this._element = null;
   };
 
   _getTemplate() {
