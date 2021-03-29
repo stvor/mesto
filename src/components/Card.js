@@ -29,6 +29,7 @@ export class Card {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content
+      .firstElementChild
       .cloneNode(true);
 
     return cardElement;

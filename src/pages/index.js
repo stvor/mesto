@@ -60,7 +60,6 @@ const createCard = (item) => {
       placePicturePopup.open(item);
     },
 
-
     handleDeleteCard: (param) => {
       deleteCardPopup.setSubmitAction(() => {
         api.deleteCard(item._id)
@@ -75,7 +74,6 @@ const createCard = (item) => {
 
       deleteCardPopup.open();
     },
-
 
     handleLikeCard: (isLikedByMe) => {
       if (!isLikedByMe) {
